@@ -12,7 +12,7 @@ public class MatappApp extends Application {
 		menuController=new MenuController();
 		
 		Scene scene=new Scene(menuController.getRoot());
-		primaryStage.setTitle("Matapp");
+		primaryStage.setTitle("Matapphuvuhviu");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
