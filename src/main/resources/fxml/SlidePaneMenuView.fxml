@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" prefWidth="150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Calculadora">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <JFXButton fx:id="estandarButton" maxWidth="1.7976931348623157E308" text="Estándar">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+               <stops>
+                  <Stop color="#1bd7d4" />
+                  <Stop color="#2631c9" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="binariaButton" maxWidth="1.7976931348623157E308" text="Binaria">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+               <stops>
+                  <Stop color="#1bd7d4" />
+                  <Stop color="#2631c9" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="fisicaButton" maxWidth="1.7976931348623157E308" text="Física">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+               <stops>
+                  <Stop color="#1ed47e" />
+                  <Stop color="#1ed47e" offset="0.007662835249042145" />
+                  <Stop color="#44d90d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="matricesButton" maxWidth="1.7976931348623157E308" text="Matrices">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+               <stops>
+                  <Stop color="#1bd7d4" />
+                  <Stop color="#2631c9" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="notaButton" maxWidth="1.7976931348623157E308" text="Nota">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+               <stops>
+                  <Stop color="#1bd7d4" />
+                  <Stop color="#2631c9" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</VBox>
