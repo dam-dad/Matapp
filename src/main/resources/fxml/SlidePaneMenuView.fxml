@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -80,4 +81,7 @@
          </font>
       </JFXButton>
    </children>
+   <padding>
+      <Insets left="5.0" />
+   </padding>
 </VBox>
