@@ -8,6 +8,7 @@ public class Formula {
 	private String name;
 	private String description;
 	private String expression;
+	private Variable result;
 	private List<Variable> variables = new ArrayList<>();
 
 	public String getName() {
@@ -32,6 +33,14 @@ public class Formula {
 
 	public void setExpression(String expression) {
 		this.expression = expression;
+	}
+
+	public Variable getResult() {
+		return result;
+	}
+
+	public void setResult(Variable result) {
+		this.result = result;
 	}
 
 	public List<Variable> getVariables() {

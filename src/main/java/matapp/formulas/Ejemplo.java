@@ -3,35 +3,51 @@ package matapp.formulas;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import static matapp.expreval.ExprEval.*;
+
 public class Ejemplo {
 
 	public static void main(String[] args) {
 
-		Variable v1 = new Variable();
-		v1.setName("d");
-		v1.setDescripcion("distancia");
+		Variable v = new Variable();
+		v.setName("v");
+		v.setDescripcion("velocidad");
 
-		Variable v2 = new Variable();
-		v2.setName("t");
-		v2.setDescripcion("tiempo");
+		Variable d = new Variable();
+		d.setName("d");
+		d.setDescripcion("distancia");
 
-		Formula f1 = new Formula();
-		f1.setName("Velocidad");
-		f1.setDescription("Rapidez en la que viaja un objeto en una dirección específica");
-		f1.setExpression("d/t");
-		f1.getVariables().add(v1);
-		f1.getVariables().add(v2);
+		Variable t = new Variable();
+		t.setName("t");
+		t.setDescripcion("tiempo");
 
-		Category c1 = new Category();
-		c1.setName("Cinemática");
-		c1.getFormulas().add(f1);
+		Formula f = new Formula();
+		f.setName("Velocidad");
+		f.setDescription("Rapidez en la que viaja un objeto en una dirección específica");
+		f.setExpression("d/t");
+		f.setResult(v);
+		f.getVariables().add(d);
+		f.getVariables().add(t);
+
+		Category c = new Category();
+		c.setName("Cinemática");
+		c.getFormulas().add(f);
 
 		FormulaList fl = new FormulaList();
-		fl.getCategories().add(c1);
+		fl.getCategories().add(c);
 
+		// muestra la lista de fórmulas en json
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		System.out.println(gson.toJson(fl));
+		System.out.println(gson.toJson(fl) + "\n");
 
+		// evalúa la expresión de la formula con unos valores
+		Double r = (Double) eval(
+				f.getExpression(), 
+				param(d.getName(), 15), 
+				param(t.getName(), 6)
+			);
+		System.out.println(v.getName() + "=" + r);
+		
 	}
 
 }
