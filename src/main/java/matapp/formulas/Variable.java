@@ -1,24 +1,35 @@
 package matapp.formulas;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Variable {
 
-	private String name;//nombre de la variable F, m, a, v ...
-	private String descripcion;//descripcion de la variable breve
+	private StringProperty name = new SimpleStringProperty();
+	private StringProperty descripcion = new SimpleStringProperty();
 
-	public String getName() {
-		return name;
+	public final StringProperty nameProperty() {
+		return this.name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public final String getName() {
+		return this.nameProperty().get();
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public final void setName(final String name) {
+		this.nameProperty().set(name);
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public final StringProperty descripcionProperty() {
+		return this.descripcion;
+	}
+
+	public final String getDescripcion() {
+		return this.descripcionProperty().get();
+	}
+
+	public final void setDescripcion(final String descripcion) {
+		this.descripcionProperty().set(descripcion);
 	}
 
 }
