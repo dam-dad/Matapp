@@ -7,12 +7,14 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -46,8 +48,10 @@ public class MenuController implements Initializable{
     @FXML
     private JFXButton notaButton;
     
+    //controllers
     private SlidePaneMenuController slidePaneMenuController; 
     
+    private FisicaMainController fisicaMainController;
     
     public MenuController() {
     	
@@ -62,8 +66,14 @@ public class MenuController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//controllers
 		slidePaneMenuController=new SlidePaneMenuController();
+		fisicaMainController=new FisicaMainController();
 
+		
+
+		
+		
 		VBox vBox=slidePaneMenuController.getRoot();
 		menuDrawer.setSidePane(vBox);
 		/*try {
@@ -83,13 +93,25 @@ public class MenuController implements Initializable{
 				 
 				if(menuDrawer.isOpened()) {
 					menuDrawer.close();//se cierra
+					menuDrawer.setPrefWidth(10);//revisar intento que la parte izquierda del border pane se encoja cuando cierro el drawer
+//					tamanio(true);
 				}else {
 					menuDrawer.open();//se abrirá
+					menuDrawer.setPrefWidth(150);
 				}
 		});
-		
+		//actions
 		slidePaneMenuController.getEstandarButton().setOnAction(e->onEstandarButton());
+		slidePaneMenuController.getFisicaButton().setOnAction(e->onFisicaButton());
+		
 	}
+	/*private void tamanio(boolean encoger) {
+		double aux;
+		if (encoger) {
+			while((aux=menuDrawer.getPrefWidth())>10)
+				menuDrawer.setPrefWidth(--aux);
+		}
+	}*/
 	
 	public BorderPane getRoot() {
 		return root;
@@ -98,6 +120,10 @@ public class MenuController implements Initializable{
 	private void onEstandarButton() {//aquí nos encargaríamos de que se mostrase la calculadora especificada
 		System.out.println("Hola");
 		//this.root.setCenter(); aqui colocamos la calculadora esperada
+		
+	}
+	private void onFisicaButton() {
+		root.setCenter(fisicaMainController.getRoot());
 		
 	}
 

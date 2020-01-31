@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Category {
 
-	private String name;
-	private List<Formula> formulas = new ArrayList<>();
+	private String name;//nombre de la categoria Campo gravitatorio,campo electrico...
+	private List<Formula> formulas = new ArrayList<>(); //listado de formulas  pertenecientes a la categoría
 
 	public String getName() {
 		return name;

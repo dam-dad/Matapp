@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Formula {
 
-	private String name;
-	private String description;
-	private String expression;
-	private Variable result;
-	private List<Variable> variables = new ArrayList<>();
+	private String name;//nombre dado a la formula
+	private String description;// descripcion de lo que debería hacer la fórmula
+	private String expression;// expresion matematica de la formula( se usara para su calculo)
+	private Variable result;// variable resultado, se expresará en la magnitud que corresponda
+	private List<Variable> variables = new ArrayList<>(); //listado de variables que poseerá la formula para su cálculo
 
 	public String getName() {
 		return name;

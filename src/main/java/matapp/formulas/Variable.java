@@ -2,8 +2,8 @@ package matapp.formulas;
 
 public class Variable {
 
-	private String name;
-	private String descripcion;
+	private String name;//nombre de la variable F, m, a, v ...
+	private String descripcion;//descripcion de la variable breve
 
 	public String getName() {
 		return name;
