@@ -53,6 +53,8 @@ public class MenuController implements Initializable{
     
     private FisicaMainController fisicaMainController;
     
+    private MatrixController matrizController;
+    
     public MenuController() {
     	
     	try {
@@ -69,7 +71,8 @@ public class MenuController implements Initializable{
 		//controllers
 		slidePaneMenuController=new SlidePaneMenuController();
 		fisicaMainController=new FisicaMainController();
-
+		matrizController = new MatrixController();
+		
 		
 
 		
@@ -103,7 +106,7 @@ public class MenuController implements Initializable{
 		//actions
 		slidePaneMenuController.getEstandarButton().setOnAction(e->onEstandarButton());
 		slidePaneMenuController.getFisicaButton().setOnAction(e->onFisicaButton());
-		
+		slidePaneMenuController.getMatricesButton().setOnAction(e->onMatrizButton());
 	}
 	/*private void tamanio(boolean encoger) {
 		double aux;
@@ -113,6 +116,10 @@ public class MenuController implements Initializable{
 		}
 	}*/
 	
+	private void onMatrizButton() {
+		root.setCenter(matrizController.getRoot());
+	}
+
 	public BorderPane getRoot() {
 		return root;
 	}
