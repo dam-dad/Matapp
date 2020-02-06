@@ -25,7 +25,6 @@ public class Matriz extends GridPane{
 		ma.addListener((o, ov, nv)->generarTamanoGridPane());
 		edit.addListener((o, ov, nv)->generarMatriz());
 	}
-	
 
 	private void generarTamanoGridPane() {
 		getColumnConstraints().clear();
@@ -54,6 +53,7 @@ public class Matriz extends GridPane{
 					add(tf, i, j);
 				}else {
 					add(new Label(""+ma.get().get(j,i)), i, j);
+					setGridLinesVisible(true);
 				}
 			}
 		}
