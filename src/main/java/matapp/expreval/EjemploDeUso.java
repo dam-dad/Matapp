@@ -32,7 +32,8 @@ public class EjemploDeUso {
 		}	
 		private static void sample4() {
 			Param<?> [] params = { param("masa", 15), param("gravedad", 9.8) };
-			Double result = (Double) eval("masa * gravedad", params);
+			Double result = (Double) eval("Math.pow(masa, 2)", params);
+			
 			System.out.println(result);
 		}
 	}

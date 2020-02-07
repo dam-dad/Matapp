@@ -5,9 +5,19 @@ import javafx.beans.property.StringProperty;
 
 public class Variable {
 
-	private StringProperty name = new SimpleStringProperty();
-	private StringProperty descripcion = new SimpleStringProperty();
-
+	private StringProperty name = new SimpleStringProperty();//letra asignada F,v...
+	private StringProperty descripcion = new SimpleStringProperty();// significado de la variable Fuerza,velocidad...
+	private StringProperty magnitud =new SimpleStringProperty(); //Magnitud en la que se mide la variable kg, m/s ...
+	
+	public Variable() {
+		
+	}
+	public Variable(String name, String descripcion,String magnitud) {
+		setName(name);
+		setDescripcion(descripcion);
+		setMagnitud(magnitud);
+	}
+	
 	public final StringProperty nameProperty() {
 		return this.name;
 	}
@@ -31,5 +41,20 @@ public class Variable {
 	public final void setDescripcion(final String descripcion) {
 		this.descripcionProperty().set(descripcion);
 	}
+
+	public final StringProperty magnitudProperty() {
+		return this.magnitud;
+	}
+	
+
+	public final String getMagnitud() {
+		return this.magnitudProperty().get();
+	}
+	
+
+	public final void setMagnitud(final String magnitud) {
+		this.magnitudProperty().set(magnitud);
+	}
+	
 
 }

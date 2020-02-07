@@ -3,52 +3,112 @@ package matapp.formulas;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.image.ImageView;
+
 public class Formula {
 
-	private String name;//nombre dado a la formula
-	private String description;// descripcion de lo que debería hacer la fórmula
-	private String expression;// expresion matematica de la formula( se usara para su calculo)
-	private Variable result;// variable resultado, se expresará en la magnitud que corresponda
-	private List<Variable> variables = new ArrayList<>(); //listado de variables que poseerá la formula para su cálculo
-
-	public String getName() {
-		return name;
+	private StringProperty name=new SimpleStringProperty();//nombre dado a la formula
+	private StringProperty description=new SimpleStringProperty();// descripcion de lo que debería hacer la fórmula
+	private StringProperty expression=new SimpleStringProperty();// expresion matematica de la formula( se usara para su calculo)
+//	private ObjectProperty<ImageView> imgExpresion=new SimpleObjectProperty<>();//consultar si debe ser un object o string y que luego sea cuando se llame a la clase FOrmulaUtils
+	private ObjectProperty<Variable> result=new SimpleObjectProperty<>();// variable resultado, se expresará en la magnitud que corresponda
+	private ListProperty<Variable> variables = new SimpleListProperty<>(FXCollections.observableArrayList(new ArrayList<>())); //listado de variables que poseerá la formula para su cálculo
+	
+	
+	public Formula() {
+		
 	}
-
-	public void setName(String name) {
-		this.name = name;
+//	public Formula(String name,String description,String expression,ImageView imgExpresion) {
+//		setName(name);
+//		setDescription(description);
+//		setExpression(expression);
+//		setImgExpresion(imgExpresion);
+//	}
+	public Formula(String name,String description,String expression) {
+		setName(name);
+		setDescription(description);
+		setExpression(expression);
 	}
-
-	public String getDescription() {
-		return description;
+	public final StringProperty nameProperty() {
+		return this.name;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	
+	public final String getName() {
+		return this.nameProperty().get();
 	}
-
-	public String getExpression() {
-		return expression;
+	
+	public final void setName(final String name) {
+		this.nameProperty().set(name);
 	}
-
-	public void setExpression(String expression) {
-		this.expression = expression;
+	
+	public final StringProperty descriptionProperty() {
+		return this.description;
 	}
-
-	public Variable getResult() {
-		return result;
+	
+	public final String getDescription() {
+		return this.descriptionProperty().get();
 	}
-
-	public void setResult(Variable result) {
-		this.result = result;
+	
+	public final void setDescription(final String description) {
+		this.descriptionProperty().set(description);
 	}
-
-	public List<Variable> getVariables() {
-		return variables;
+	
+	public final StringProperty expressionProperty() {
+		return this.expression;
 	}
-
-	public void setVariables(List<Variable> variables) {
-		this.variables = variables;
+	
+	public final String getExpression() {
+		return this.expressionProperty().get();
 	}
+	
+	public final void setExpression(final String expression) {
+		this.expressionProperty().set(expression);
+	}
+	
+	public final ObjectProperty<Variable> resultProperty() {
+		return this.result;
+	}
+	
+	public final Variable getResult() {
+		return this.resultProperty().get();
+	}
+	
+	public final void setResult(final Variable result) {
+		this.resultProperty().set(result);
+	}
+	
+	public final ListProperty<Variable> variablesProperty() {
+		return this.variables;
+	}
+	
+	public final ObservableList<Variable> getVariables() {
+		return this.variablesProperty().get();
+	}
+	
+	public final void setVariables(final ObservableList<Variable> variables) {
+		this.variablesProperty().set(variables);
+	}
+//	public final ObjectProperty<ImageView> imgExpresionProperty() {
+//		return this.imgExpresion;
+//	}
+//	
+//	public final ImageView getImgExpresion() {
+//		return this.imgExpresionProperty().get();
+//	}
+//	
+//	public final void setImgExpresion(final ImageView imgExpresion) {
+//		this.imgExpresionProperty().set(imgExpresion);
+//	}
+	
+	
+	
 
 }

@@ -1,27 +1,57 @@
 package matapp.formulas;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Category {
 
-	private String name;//nombre de la categoria Campo gravitatorio,campo electrico...
-	private List<Formula> formulas = new ArrayList<>(); //listado de formulas  pertenecientes a la categoría
-
-	public String getName() {
-		return name;
+	private StringProperty name=new SimpleStringProperty();//nombre de la categoria Campo gravitatorio,campo electrico...
+	
+	private ListProperty<Formula> formulas = new SimpleListProperty<>(FXCollections.observableArrayList(new ArrayList<>())); //listado de formulas  pertenecientes a la categoría
+	
+	public Category() {
+		
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public Category(String name) {
+		setName(name);
 	}
-
-	public List<Formula> getFormulas() {
-		return formulas;
+	
+	
+	public final StringProperty nameProperty() {
+		return this.name;
 	}
+	
 
-	public void setFormulas(List<Formula> formulas) {
-		this.formulas = formulas;
+	public final String getName() {
+		return this.nameProperty().get();
 	}
+	
+
+	public final void setName(final String name) {
+		this.nameProperty().set(name);
+	}
+	
+
+	public final ListProperty<Formula> formulasProperty() {
+		return this.formulas;
+	}
+	
+
+	public final ObservableList<Formula> getFormulas() {
+		return this.formulasProperty().get();
+	}
+	
+
+	public final void setFormulas(final ObservableList<Formula> formulas) {
+		this.formulasProperty().set(formulas);
+	}
+	
+
 
 }

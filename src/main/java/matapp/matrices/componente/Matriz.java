@@ -20,7 +20,10 @@ public class Matriz extends GridPane{
 	private BooleanProperty edit = new SimpleBooleanProperty();//Operacion con la mtriz
 	
 	public Matriz() {
-		super();
+		super();	
+		setHgap(10);
+		setVgap(2);
+		setGridLinesVisible(true);
 		generarMatriz();
 		ma.addListener((o, ov, nv)->generarTamanoGridPane());
 		edit.addListener((o, ov, nv)->generarMatriz());

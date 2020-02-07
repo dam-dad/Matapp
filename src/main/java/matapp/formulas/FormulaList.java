@@ -3,16 +3,30 @@ package matapp.formulas;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class FormulaList {
 
-	private List<Category> categories = new ArrayList<>();
-
-	public List<Category> getCategories() {
-		return categories;
+	private ListProperty<Category> categories = new SimpleListProperty<>(FXCollections.observableArrayList(new ArrayList<>()));//listado de categorias
+	
+	public final ListProperty<Category> categoriesProperty() {
+		return this.categories;
 	}
+	
 
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	public final ObservableList<Category> getCategories() {
+		return this.categoriesProperty().get();
 	}
+	
+
+	public final void setCategories(final ObservableList<Category> categories) {
+		this.categoriesProperty().set(categories);
+	}
+	
+
+
 
 }
