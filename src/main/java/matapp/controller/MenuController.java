@@ -3,18 +3,13 @@ package matapp.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -57,6 +52,8 @@ public class MenuController implements Initializable{
     
     private BinarioController binarioController;
     
+    private CalculadoraBasicaController basicaController;
+    
     public MenuController() {
     	
     	try {
@@ -75,9 +72,10 @@ public class MenuController implements Initializable{
 		fisicaMainController=new FisicaMainController();
 		matrizController = new MatrixController();
 		binarioController= new BinarioController();
+		basicaController = new CalculadoraBasicaController();
 		
 		
-
+		root.setCenter(basicaController.getRoot());
 		
 		
 		VBox vBox=slidePaneMenuController.getRoot();
@@ -132,8 +130,8 @@ public class MenuController implements Initializable{
 	}
 	
 	private void onEstandarButton() {//aquí nos encargaríamos de que se mostrase la calculadora especificada
-		System.out.println("Hola");
-		//this.root.setCenter(); aqui colocamos la calculadora esperada
+		
+		root.setCenter(basicaController.getRoot());// aqui colocamos la calculadora esperada
 		
 	}
 	private void onFisicaButton() {
