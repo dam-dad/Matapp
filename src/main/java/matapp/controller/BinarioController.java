@@ -50,13 +50,12 @@ public class BinarioController implements Initializable {
 	@FXML
 	private JFXRadioButton hexButton, decButton, octButton, binButton;
 
-	public BinarioController(){
+	public BinarioController() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BinarioView.fxml"));
 		loader.setController(this);
 		try {
 			loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -203,24 +202,39 @@ public class BinarioController implements Initializable {
 
 	// Funcion "Action" para los numeros recibe el evento "e" y el numero del boton
 	private void numeroButtonAction(ActionEvent e, String numero) {
-		// Si es "Null" lo coloca como primer valor y si no lo concatena a lo anterior
-		if (bindeoValorStringPoperty.getValue() == null) {
-			bindeoValorStringPoperty.setValue(numero);
-			;
-		} else {
-			bindeoValorStringPoperty.setValue(bindeoValorStringPoperty.getValue() + numero);
+		try {
+			// Si es "Null" lo coloca como primer valor y si no lo concatena a lo anterior
+			if (bindeoValorStringPoperty.getValue() == null) {
+				bindeoValorStringPoperty.setValue(numero);
+				;
+			} else {
+				bindeoValorStringPoperty.setValue(bindeoValorStringPoperty.getValue() + numero);
+			}
+			convertirValor();
+		} catch (java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo con el número");
+			alert.setContentText("El elemento es demaciado grande");
+			alert.showAndWait();
 		}
-		convertirValor();
 	}
 
 	private void letraHexaButtonAction(ActionEvent e, String letra) {
-		if (bindeoValorStringPoperty.getValue() == null) {
-			bindeoValorStringPoperty.setValue(letra);
-			;
-		} else {
-			bindeoValorStringPoperty.setValue(bindeoValorStringPoperty.getValue() + letra);
+		try {
+			if (bindeoValorStringPoperty.getValue() == null) {
+				bindeoValorStringPoperty.setValue(letra);
+				;
+			} else {
+				bindeoValorStringPoperty.setValue(bindeoValorStringPoperty.getValue() + letra);
+			}
+			convertirValor();
+		} catch (java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo con el número");
+			alert.setContentText("El elemento es demaciado grande");
+			alert.showAndWait();
 		}
-		convertirValor();
+
 	}
 
 	// Funcion "Action" para el boton "CE"
@@ -343,19 +357,76 @@ public class BinarioController implements Initializable {
 	}
 
 	private void andButtonAction(ActionEvent e) {
-		// TODO
+		try {
+			if (!bindeoValorStringPoperty.getValue().isEmpty()) {
+				if (!(primerValor == "0")) {
+					this.igualButtonAction(e);
+					primerValor = bindeoValorStringPoperty.getValue();
+				} else {
+					primerValor = bindeoValorStringPoperty.getValue();
+				}
+				bindeoOperacionStringPoperty.setValue("AND");
+				bindeoValorStringPoperty.setValue("");
+			}
+		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo al operar");
+			alert.setContentText("No se puede operar sin elementos");
+			alert.showAndWait();
+		}
 	}
 
 	private void orButtonAction(ActionEvent e) {
-		// TODO
+		try {
+			if (!bindeoValorStringPoperty.getValue().isEmpty()) {
+				if (!(primerValor == "0")) {
+					this.igualButtonAction(e);
+					primerValor = bindeoValorStringPoperty.getValue();
+				} else {
+					primerValor = bindeoValorStringPoperty.getValue();
+				}
+				bindeoOperacionStringPoperty.setValue("OR");
+				bindeoValorStringPoperty.setValue("");
+			}
+		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo al operar");
+			alert.setContentText("No se puede operar sin elementos");
+			alert.showAndWait();
+		}
 	}
 
 	private void xorButtonAction(ActionEvent e) {
-		// TODO
+		try {
+			if (!bindeoValorStringPoperty.getValue().isEmpty()) {
+				if (!(primerValor == "0")) {
+					this.igualButtonAction(e);
+					primerValor = bindeoValorStringPoperty.getValue();
+				} else {
+					primerValor = bindeoValorStringPoperty.getValue();
+				}
+				bindeoOperacionStringPoperty.setValue("XOR");
+				bindeoValorStringPoperty.setValue("");
+			}
+		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo al operar");
+			alert.setContentText("No se puede operar sin elementos");
+			alert.showAndWait();
+		}
 	}
 
 	private void notButtonAction(ActionEvent e) {
-		// TODO
+		try {
+			int valor = Integer.parseInt(bindeoValorStringPoperty.getValue());// guarda el valor
+			valor = ~valor;
+			bindeoValorStringPoperty.setValue(String.valueOf(valor));
+		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Fallo al operar");
+			alert.setContentText("No se puede operar sin elementos");
+			alert.showAndWait();
+		}
 	}
 
 	// Funcion "Action" para el boton igual
@@ -389,6 +460,18 @@ public class BinarioController implements Initializable {
 			case "/":
 				resultado = primero / segundo;
 				break;
+			case "AND":
+				resultado = primero & segundo;
+				break;
+			case "OR":
+				resultado = primero | segundo;
+				break;
+			case "XOR":
+				resultado = primero ^ segundo;
+				break;
+			case "NOT":
+				// No hace nada aqui porque lo hace en su funcion para que no de error
+				break;
 
 			}
 
@@ -408,7 +491,6 @@ public class BinarioController implements Initializable {
 
 			// si no puede calcular muestra una alerta
 		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
-			//e1.printStackTrace();
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Fallo al operar");
 			alert.setContentText("No se puede operar sin elementos");

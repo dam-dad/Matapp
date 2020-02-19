@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import matapp.matrices.componente.Matriz?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import matapp.matrices.componente.Matriz?>
 
 <HBox fx:id="root" prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="480.0" prefWidth="459.0" HBox.hgrow="ALWAYS">
          <children>
-            <GridPane hgap="5.0" prefHeight="487.0" prefWidth="446.0" vgap="5.0">
+            <GridPane prefHeight="464.0" prefWidth="558.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="169.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.5" minWidth="10.0" prefWidth="51.5" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="-Infinity" minHeight="10.0" />
-                <RowConstraints maxHeight="-Infinity" minHeight="10.0" />
-                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="156.0" prefHeight="195.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="200.0" minHeight="-Infinity" prefHeight="161.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="115.0" minHeight="0.0" prefHeight="64.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Filas:" GridPane.columnIndex="1" />
-                  <Label text="Columnas:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Spinner fx:id="rowSpinner" GridPane.columnIndex="2" />
-                  <Spinner fx:id="columnSpinner" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button fx:id="moveMatrixButton" mnemonicParsing="false" onAction="#onMoveMatrixAction" text="&lt;-" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                  <Matriz fx:id="matrixOperador" GridPane.rowSpan="3" />
-                  <Button fx:id="resultButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="=" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                  <Matriz fx:id="matrixOperador" />
+                  <HBox prefHeight="204.0" prefWidth="281.0" GridPane.rowIndex="1">
+                     <children>
+                        <JFXButton fx:id="moreRowButton" onAction="#onMoreRowButtonAction" text="+" />
+                        <JFXButton fx:id="lessRowButton" onAction="#onLessRowButtonAction" text="-" />
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <JFXButton fx:id="lessColumnButton" onAction="#onLessColumnButtonAction" text="-" />
+                        <JFXButton fx:id="moreColumnButton" onAction="#onMoreColumnButtonAction" text="+" />
+                     </children>
+                  </VBox>
+                  <JFXButton fx:id="resultButton" maxWidth="1.7976931348623157E308" onAction="#onResultAction" text="=" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                </children>
-               <VBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </padding>
             </GridPane>
             <GridPane hgap="5.0" prefHeight="200.0" prefWidth="456.0" vgap="5.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
@@ -57,18 +53,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" />
               </rowConstraints>
                <children>
-                  <Button fx:id="inverseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onInverseAction" text="A^-1" />
-                  <Button fx:id="orthogonalButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onOrthogonalAction" text="A†" GridPane.columnIndex="1" />
-                  <Button fx:id="rangeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRangeAction" text="Rango" GridPane.columnIndex="2" />
-                  <Button fx:id="diagonalButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDiagonalAction" text="Diagonal" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="vectorButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onVectorAction" text="Vector" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="determinantButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDeterminantAction" text=" |A|" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <JFXButton fx:id="inverseButton" maxWidth="1.7976931348623157E308" onAction="#onInverseAction" text="A^-1" GridPane.hgrow="ALWAYS" />
+                  <JFXButton fx:id="orthogonalButton" maxWidth="1.7976931348623157E308" onAction="#onOrthogonalAction" text="A†" GridPane.columnIndex="1" />
+                  <JFXButton fx:id="rangeButton" maxWidth="1.7976931348623157E308" onAction="#onRangeAction" text="Rango" GridPane.columnIndex="2" />
+                  <JFXButton fx:id="diagonalButton" maxWidth="1.7976931348623157E308" onAction="#onDiagonalAction" text="Diagonal" GridPane.rowIndex="1" />
+                  <JFXButton fx:id="vectorButton" maxWidth="1.7976931348623157E308" onAction="#onVectorAction" text="Vector" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXButton fx:id="determinantButton" maxWidth="1.7976931348623157E308" onAction="#onDeterminantAction" text="|A|" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <children>
-                        <Button fx:id="additionButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAddtionAction" text="+" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="subtractionButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSubtrectionAction" text="-" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="divideButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDivideAction" text="/" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="multiplyButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMultiplyAction" text="*" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="additionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onAddtionAction" prefHeight="27.0" prefWidth="103.0" text="+" />
+                        <JFXButton fx:id="subtractionButton" maxWidth="1.7976931348623157E308" onAction="#onSubtrectionAction" prefHeight="27.0" prefWidth="103.0" text="-" />
+                        <JFXButton fx:id="divideButton" maxWidth="1.7976931348623157E308" onAction="#onDivideAction" prefHeight="27.0" prefWidth="103.0" text="/" />
+                        <JFXButton fx:id="multiplyButton" maxWidth="1.7976931348623157E308" onAction="#onMultiplyAction" prefHeight="27.0" prefWidth="103.0" text="*" />
                      </children>
                      <padding>
                         <Insets right="5.0" />
@@ -81,6 +77,6 @@
             </GridPane>
          </children>
       </VBox>
-      <ListView fx:id="resultBox" prefHeight="200.0" prefWidth="200.0" />
+      <VBox fx:id="resultBox" prefHeight="480.0" prefWidth="153.0" />
    </children>
 </HBox>

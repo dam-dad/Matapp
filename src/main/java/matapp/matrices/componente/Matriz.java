@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import matapp.utils.FormulaUtils;
 
 public class Matriz extends GridPane{
 
