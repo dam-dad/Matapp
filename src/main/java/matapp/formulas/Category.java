@@ -52,6 +52,9 @@ public class Category {
 		this.formulasProperty().set(formulas);
 	}
 	
-
+	@Override
+	public String toString() {
+		return getName();
+	}
 
 }

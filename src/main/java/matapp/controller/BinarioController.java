@@ -244,7 +244,7 @@ public class BinarioController implements Initializable {
 			nuevo = nuevo.substring(0, nuevo.length() - 1);
 			bindeoValorStringPoperty.setValue(nuevo);
 			// Muestra una alerta si el valor esta vacio
-		} catch (java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException e1) {
+		} catch (Exception e1) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Fallo al borrar");
 			alert.setContentText("No borres un elemento vacio");
@@ -408,7 +408,7 @@ public class BinarioController implements Initializable {
 
 			// si no puede calcular muestra una alerta
 		} catch (java.lang.NullPointerException | java.lang.NumberFormatException e1) {
-			e1.printStackTrace();
+			//e1.printStackTrace();
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Fallo al operar");
 			alert.setContentText("No se puede operar sin elementos");

@@ -4,27 +4,30 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="150.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
-   </left>
-   <top>
-      <HBox prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <JFXHamburger fx:id="menuHamburger" />
-            <Label fx:id="tipoCalculadoraLabel" text="Estándar">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </HBox>
-   </top>
-</BorderPane>
+<AnchorPane fx:id="root" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="contentBorder" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXHamburger fx:id="menuHamburger" />
+                  <Label fx:id="tipoCalculadoraLabel" text="Estándar">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="5.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="150.0" direction="RIGHT" layoutX="-177.0" maxWidth="-Infinity" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-177.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

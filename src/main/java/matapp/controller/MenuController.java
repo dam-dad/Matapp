@@ -16,38 +16,30 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MenuController implements Initializable{
 	//MenuView
-	@FXML
-    private BorderPane root;
+
+    @FXML
+    private AnchorPane root;
+    
+    @FXML
+    private BorderPane contentBorder;
 
     @FXML
     private JFXHamburger menuHamburger;
 
     @FXML
+    private Label tipoCalculadoraLabel;
+
+    @FXML
     private JFXDrawer menuDrawer;
-    
-    
-    //SlidePaneMenuView //no funciona, no puede acceder a dichos id 
-
-    @FXML
-    private JFXButton estandarButton;
-
-    @FXML
-    private JFXButton binariaButton;
-
-    @FXML
-    private JFXButton fisicaButton;
-
-    @FXML
-    private JFXButton matricesButton;
-
-    @FXML
-    private JFXButton notaButton;
-    
+    //tranciciones
+    HamburgerBackArrowBasicTransition transiction;
     //controllers
     private SlidePaneMenuController slidePaneMenuController; 
     
@@ -56,6 +48,7 @@ public class MenuController implements Initializable{
     private MatrixController matrizController;
     
     private BinarioController binarioController;
+
     
     public MenuController() {
     	
@@ -70,6 +63,8 @@ public class MenuController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//transciciones
+		transiction=new HamburgerBackArrowBasicTransition(menuHamburger);
 		//controllers
 		slidePaneMenuController=new SlidePaneMenuController();
 		fisicaMainController=new FisicaMainController();
@@ -77,21 +72,13 @@ public class MenuController implements Initializable{
 		binarioController= new BinarioController();
 		
 		
-
-		
 		
 		VBox vBox=slidePaneMenuController.getRoot();
 		menuDrawer.setSidePane(vBox);
-		/*try {
-//			basicamente cargamos otro fxml en el vBox el cual usaremos luego en nuestro drawer
-			VBox vBox = FXMLLoader.load(getClass().getResource("/fxml/SlidePaneMenuView.fxml"));
-			menuDrawer.setSidePane(vBox);//aquí le asignamos el contenido a drawer
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}*/
+		
 		
 		//funciones del drawer
-		HamburgerBackArrowBasicTransition transiction=new HamburgerBackArrowBasicTransition(menuHamburger);
+		menuDrawer.open();
 		transiction.setRate(-1);
 		menuHamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
 				transiction.setRate(transiction.getRate()*-1);				
@@ -99,11 +86,8 @@ public class MenuController implements Initializable{
 				 
 				if(menuDrawer.isOpened()) {
 					menuDrawer.close();//se cierra
-					menuDrawer.setPrefWidth(10);//revisar intento que la parte izquierda del border pane se encoja cuando cierro el drawer
-//					tamanio(true);
 				}else {
 					menuDrawer.open();//se abrirá
-					menuDrawer.setPrefWidth(150);
 				}
 		});
 		//actions
@@ -112,33 +96,46 @@ public class MenuController implements Initializable{
 		slidePaneMenuController.getMatricesButton().setOnAction(e->onMatrizButton());
 		slidePaneMenuController.getBinariaButton().setOnAction(e->onBinarioButton());
 	}
-	/*private void tamanio(boolean encoger) {
-		double aux;
-		if (encoger) {
-			while((aux=menuDrawer.getPrefWidth())>10)
-				menuDrawer.setPrefWidth(--aux);
-		}
-	}*/
 	
 	private void onMatrizButton() {
-		root.setCenter(matrizController.getRoot());
+		tipoCalculadoraLabel.setText("Matriz");
+		contentBorder.setCenter(matrizController.getRoot());
+		
+		transiction.setRate(transiction.getRate()*-1);
+		transiction.play();
+		menuDrawer.open();//realmente lo estamos cerrando
 	}
+	
 	private void onBinarioButton() {
-		root.setCenter(binarioController.getRoot());
-	}
+		tipoCalculadoraLabel.setText("Binario");
+		contentBorder.setCenter(binarioController.getRoot());
 
-	public BorderPane getRoot() {
-		return root;
+		
+		transiction.setRate(transiction.getRate()*-1);
+		transiction.play();
+		menuDrawer.open();//realmente lo estamos cerrando
 	}
 	
 	private void onEstandarButton() {//aquí nos encargaríamos de que se mostrase la calculadora especificada
-		System.out.println("Hola");
-		//this.root.setCenter(); aqui colocamos la calculadora esperada
 		
+		//root.setCenter(); aqui colocamos la calculadora esperada
+		
+		transiction.setRate(transiction.getRate()*-1);
+		transiction.play();
+		menuDrawer.open();
 	}
+	
 	private void onFisicaButton() {
-		root.setCenter(fisicaMainController.getRoot());
+		tipoCalculadoraLabel.setText("Física");
+		contentBorder.setCenter(fisicaMainController.getRoot());
+		
+		transiction.setRate(transiction.getRate()*-1);
+		transiction.play();
+		menuDrawer.open();
 		
 	}
 
+	public AnchorPane getRoot() {
+		return root;
+	}
 }

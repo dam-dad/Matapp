@@ -18,7 +18,7 @@ public class Formula {
 	private StringProperty name=new SimpleStringProperty();//nombre dado a la formula
 	private StringProperty description=new SimpleStringProperty();// descripcion de lo que debería hacer la fórmula
 	private StringProperty expression=new SimpleStringProperty();// expresion matematica de la formula( se usara para su calculo)
-//	private ObjectProperty<ImageView> imgExpresion=new SimpleObjectProperty<>();//consultar si debe ser un object o string y que luego sea cuando se llame a la clase FOrmulaUtils
+	private StringProperty imgExpresion=new SimpleStringProperty();//consultar si debe ser un object o string y que luego sea cuando se llame a la clase FOrmulaUtils
 	private ObjectProperty<Variable> result=new SimpleObjectProperty<>();// variable resultado, se expresará en la magnitud que corresponda
 	private ListProperty<Variable> variables = new SimpleListProperty<>(FXCollections.observableArrayList(new ArrayList<>())); //listado de variables que poseerá la formula para su cálculo
 	
@@ -26,17 +26,17 @@ public class Formula {
 	public Formula() {
 		
 	}
-//	public Formula(String name,String description,String expression,ImageView imgExpresion) {
-//		setName(name);
-//		setDescription(description);
-//		setExpression(expression);
-//		setImgExpresion(imgExpresion);
-//	}
-	public Formula(String name,String description,String expression) {
+	
+	
+	public Formula(String name,String description,String expression,String imgExpresion) {
 		setName(name);
 		setDescription(description);
 		setExpression(expression);
+		setImgExpresion(imgExpresion);
 	}
+
+	
+	
 	public final StringProperty nameProperty() {
 		return this.name;
 	}
@@ -96,17 +96,19 @@ public class Formula {
 	public final void setVariables(final ObservableList<Variable> variables) {
 		this.variablesProperty().set(variables);
 	}
-//	public final ObjectProperty<ImageView> imgExpresionProperty() {
-//		return this.imgExpresion;
-//	}
-//	
-//	public final ImageView getImgExpresion() {
-//		return this.imgExpresionProperty().get();
-//	}
-//	
-//	public final void setImgExpresion(final ImageView imgExpresion) {
-//		this.imgExpresionProperty().set(imgExpresion);
-//	}
+	public final StringProperty imgExpresionProperty() {
+		return this.imgExpresion;
+	}
+	
+	public final String getImgExpresion() {
+		return this.imgExpresionProperty().get();
+	}
+	
+	public final void setImgExpresion(final String imgExpresion) {
+		this.imgExpresionProperty().set(imgExpresion);
+	}
+	
+
 	
 	
 	
