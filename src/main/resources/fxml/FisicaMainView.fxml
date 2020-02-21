@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,7 +19,10 @@
             </ScrollPane>
          </center>
          <left>
-            <JFXListView fx:id="categoriasList" maxHeight="1.7976931348623157E308" prefHeight="480.0" BorderPane.alignment="TOP_LEFT" />
+            <JFXListView fx:id="categoriasList" maxHeight="1.7976931348623157E308" prefHeight="480.0" BorderPane.alignment="TOP_LEFT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXListView>
          </left>
          <padding>
             <Insets bottom="5.0" left="5.0" />

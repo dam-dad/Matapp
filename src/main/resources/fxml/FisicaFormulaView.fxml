@@ -50,6 +50,9 @@
          <padding>
             <Insets right="5.0" />
          </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </GridPane>
       <JFXButton fx:id="calcularButton" onAction="#onCalcular" style="-fx-background-color: lightgrey;" text="Calcular">
          <cursor>

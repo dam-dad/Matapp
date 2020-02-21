@@ -24,17 +24,12 @@
       </JFXButton>
       <JFXButton fx:id="binariaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Programador">
          <ripplerFill>
-<<<<<<< HEAD
+
             <LinearGradient endX="0.7458033573141487" endY="1.0" startX="0.10633778691332653" startY="0.25721137375813635">
                <stops>
                   <Stop color="#ccd61c" />
                   <Stop color="#fff81ffc" offset="1.0" />
-=======
-            <LinearGradient endX="1.0" endY="1.0" startX="0.44761904761904764" startY="0.19523809523809524">
-               <stops>
-                  <Stop color="#1abbcd" />
-                  <Stop color="#000861" offset="1.0" />
->>>>>>> 245131e86754f2494006b79386a4358e9518b007
+
                </stops>
             </LinearGradient>
          </ripplerFill>
