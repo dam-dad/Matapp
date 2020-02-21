@@ -1,0 +1,300 @@
+{
+  "categories": [
+    {
+      "name": "Campo Gravitatorio",
+      "formulas": [
+        {
+          "name": "Fuerza Gravitatoria",
+          "description": "Fuerza sobre una masa m1 en presencia de otra masa m2",
+          "expression": "(6.674*Math.pow(10, -11))*m*M/Math.pow(r,2)",
+          "imgExpresion": "F \u003dG\\frac{m·M}{r^2} ",
+          "result": {
+            "name": "F",
+            "descripcion": "Fuerza",
+            "magnitud": "N"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "M",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "r",
+              "descripcion": "Distancia, radio de la órbita",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Fuerza",
+          "description": "Fuerza es igual a masa por aceleración",
+          "expression": "m*a",
+          "imgExpresion": "F \u003dm·a",
+          "result": {
+            "name": "F",
+            "descripcion": "Fuerza",
+            "magnitud": "N"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "a",
+              "descripcion": "Aceleración",
+              "magnitud": "m/s^2"
+            }
+          ]
+        },
+        {
+          "name": "Potencial Gravitatorio",
+          "description": "Potencial Gravitatorio es igual a menos la constante de gravitación universal por la masa partida por la distancia",
+          "expression": "(-6.674*Math.pow(10, -11))*m/r",
+          "imgExpresion": "V \u003d-G \\frac{m}{r}",
+          "result": {
+            "name": "V",
+            "descripcion": "Potencial gravitatorio",
+            "magnitud": "J/Kg"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "r",
+              "descripcion": "Distancia, radio de la órbita",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Energía Potencial Gravitatoria",
+          "description": "Energía Potencial es igual a menos la constante gravitacional por ambas masas entre la distancia entre ellas",
+          "expression": "(-6.674*Math.pow(10, -11))*m*M/Math.pow(r,2)",
+          "imgExpresion": "E_p \u003d \\frac{m·M}{r^2}",
+          "result": {
+            "name": "Ep",
+            "descripcion": "Energía potencial",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "M",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "r",
+              "descripcion": "Distancia, radio de la órbita",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Energía Cinética",
+          "description": "Energía es igual a un medio de la constante gravitacional por ambas masas dividido entre la distancia",
+          "expression": "0.5*(6.674*Math.pow(10, -11))*m*M/r",
+          "imgExpresion": "E_c \u003d\\frac{1}{2} · G \\frac{m·M}{r}",
+          "result": {
+            "name": "Ec",
+            "descripcion": "Energía cinética",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "M",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "r",
+              "descripcion": "Distancia, radio de la órbita",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Energía Cinética v2",
+          "description": "Energía es igual a un medio de  la velocidad al cuadrado",
+          "expression": "0.5*m*v",
+          "imgExpresion": "E_c \u003d \\frac{1}{2}m·v^2",
+          "result": {
+            "name": "Ec",
+            "descripcion": "Energía cinética",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "v",
+              "descripcion": "Velocidad",
+              "magnitud": "m/s "
+            }
+          ]
+        },
+        {
+          "name": "Energía Mecánica",
+          "description": "Energía Mecánica es igual a la suma de la energía cinética y la potencial",
+          "expression": "Ec+Ep",
+          "imgExpresion": "E_m \u003dE_c+E_p",
+          "result": {
+            "name": "Em",
+            "descripcion": "Energía mecánica",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "Ec",
+              "descripcion": "Energía cinética",
+              "magnitud": "J"
+            },
+            {
+              "name": "Ep",
+              "descripcion": "Energía potencial",
+              "magnitud": "J"
+            }
+          ]
+        },
+        {
+          "name": "Energía Mecánica v2",
+          "description": "Energía Mecánica es igual a un medio de la energía potencial",
+          "expression": "0.5*Ep",
+          "imgExpresion": "E_m\u003d\\frac{1}{2} E_p",
+          "result": {
+            "name": "Em",
+            "descripcion": "Energía mecánica",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "Ep",
+              "descripcion": "Energía potencial",
+              "magnitud": "J"
+            }
+          ]
+        },
+        {
+          "name": "Energía Mecánica v3",
+          "description": "Energía Mecánica es igual a menos un medio de la constante gravitacional por ambas masas dividido entre la distancia",
+          "expression": "-0.5*(6.674*Math.pow(10, -11))*m*M/r",
+          "imgExpresion": "E_m \u003d -\\frac{1}{2} G \\frac{m·M}{r}",
+          "result": {
+            "name": "Em",
+            "descripcion": "Energía mecánica",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "M",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "r",
+              "descripcion": "Distancia, radio de la órbita",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Velocidad de Escape",
+          "description": "Velocidad de escape desde la superficie de un planeta de masa m y radio r(altura del objeto inclusive)",
+          "expression": "Math.sqrt(2*(6.674*Math.pow(10, -11))*m/(R))",
+          "imgExpresion": "V_e \u003d\\sqrt{\\frac{2·G·m}{R}",
+          "result": {
+            "name": "v",
+            "descripcion": "Velocidad",
+            "magnitud": "m/s "
+          },
+          "variables": [
+            {
+              "name": "m",
+              "descripcion": "Masa",
+              "magnitud": "Kg"
+            },
+            {
+              "name": "R",
+              "descripcion": "Radio",
+              "magnitud": "m"
+            }
+          ]
+        },
+        {
+          "name": "Trabajo",
+          "description": "Trabajo del campo para mover una masa m desde un punto A hasta un punto b",
+          "expression": "-m*(V2-V)",
+          "imgExpresion": "W \u003d-m ·(V_2- V)",
+          "result": {
+            "name": "W",
+            "descripcion": "Trabajo",
+            "magnitud": "J"
+          },
+          "variables": [
+            {
+              "name": "V",
+              "descripcion": "Potencial gravitatorio",
+              "magnitud": "J/Kg"
+            },
+            {
+              "name": "V2",
+              "descripcion": "Potencial gravitatorio",
+              "magnitud": "J/Kg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Órbitas",
+      "formulas": [
+        {
+          "name": "Velocidad angular",
+          "description": "Velocidad es igual a dos pi por la frecuencia",
+          "expression": "Math.PI * 2 * f",
+          "imgExpresion": "w\u003d \\Pi·2·f",
+          "result": {
+            "name": "w",
+            "descripcion": "VelocidadAngular",
+            "magnitud": "rad/s"
+          },
+          "variables": [
+            {
+              "name": "f",
+              "descripcion": "Frecuencia",
+              "magnitud": "Hz"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

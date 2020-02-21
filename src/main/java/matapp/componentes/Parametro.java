@@ -3,6 +3,7 @@ package matapp.componentes;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -14,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.transform.Translate;
 import matapp.expreval.Param;
 import matapp.formulas.Formula;
 import matapp.formulas.Variable;
@@ -29,28 +31,51 @@ public class Parametro extends GridPane{
 		this.formula=formula;
 
 		setAlignment(Pos.CENTER_LEFT);
+		final NumberValidator numberValidator = new NumberValidator();
+		numberValidator.setMessage("Solo números");
 		JFXTextField auxTextField=null;
+		Label auxLabel=null;
 		for(int i=0;i<formula.getVariables().size();i++) {
 			auxTextField=new  JFXTextField();
 			valorText.get().add(auxTextField);
+			valorText.get().get(i).getValidators().add(numberValidator);
+			int j=i;
+			valorText.get().get(i).setOnKeyReleased(e ->
+		    {
+		    	
+		        if (!valorText.get().get(j).getText().equals(""))
+		        	valorText.get().get(j).validate();
+		    });
+			auxLabel=new Label(this.formula.getVariables().get(i).getName());
+			auxLabel.setOnMouseEntered(e->{//Revisar, action correcto pero no sse eejcuta, seguramente deba de guardar los label en una lista como hice con las formulas en fisicamain
+				System.out.println(this.formula.getVariables().get(j).getDescripcion());
+						});
+			
 			addRow(i, new Label(this.formula.getVariables().get(i).getName()),
 					valorText.get().get(i),
 					new Label(this.formula.getVariables().get(i).getMagnitud()));
+			 
 		}
 		
+
+	  
 	}
-	public double calcular() {
+	public String calcular() {
 		
-		ArrayList<Param<?>> params=new ArrayList<>();
-		for (int i=0;i<formula.getVariables().size();i++) {
-			params.add(param(formula.getVariables().get(i).getName(),Double.valueOf(valorText.get().get(i).getText())));
+		try {
+			ArrayList<Param<?>> params=new ArrayList<>();
+			for (int i=0;i<formula.getVariables().size();i++) {
+				params.add(param(formula.getVariables().get(i).getName(),Double.valueOf(valorText.get().get(i).getText())));
+			}
+			Param<?>[] auxParams= new Param<?>[params.size()];
+			
+			Double result = (Double) eval(formula.getExpression(), params.toArray(auxParams)); //LA E resultante es significa 10 elevado a...
+			
+			
+			return result+" "+formula.getResult().getMagnitud();
+		} catch (NumberFormatException e) {
+			return null;
 		}
-		Param<?>[] auxParams= new Param<?>[params.size()];
-		
-		Double result = (Double) eval(formula.getExpression(), params.toArray(auxParams)); //LA E resultante es significa 10 elevado a...
-		
-		
-		return result;
 	}
 	
 	

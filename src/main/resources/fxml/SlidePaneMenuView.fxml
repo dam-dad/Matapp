@@ -9,7 +9,7 @@
 
 <VBox fx:id="root" prefWidth="150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXButton fx:id="estandarButton" maxWidth="1.7976931348623157E308" text="Estándar">
+      <JFXButton fx:id="estandarButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Estándar">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
@@ -22,12 +22,12 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="binariaButton" maxWidth="1.7976931348623157E308" text="Binaria">
+      <JFXButton fx:id="binariaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Programador">
          <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+            <LinearGradient endX="1.0" endY="1.0" startX="0.44761904761904764" startY="0.19523809523809524">
                <stops>
-                  <Stop color="#1bd7d4" />
-                  <Stop color="#2631c9" offset="1.0" />
+                  <Stop color="#1abbcd" />
+                  <Stop color="#000861" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
@@ -35,7 +35,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="fisicaButton" maxWidth="1.7976931348623157E308" text="Física">
+      <JFXButton fx:id="fisicaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Física">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
@@ -49,7 +49,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="matricesButton" maxWidth="1.7976931348623157E308" text="Matrices">
+      <JFXButton fx:id="matricesButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Matrices">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
@@ -62,7 +62,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="notaButton" maxWidth="1.7976931348623157E308" text="Nota">
+      <JFXButton fx:id="notaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Nota">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>

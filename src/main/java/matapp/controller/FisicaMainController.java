@@ -106,7 +106,7 @@ public class FisicaMainController implements Initializable{
 		
 		
 		contenedorFormulasMasonry.prefWidthProperty().bind(scroll.widthProperty().subtract(50));
-	
+		
 	}
 	
 	
@@ -143,8 +143,9 @@ public class FisicaMainController implements Initializable{
 	}
 	private void onCargarFicheroAction() {
 		String fichero = "";
-		 
-		try (BufferedReader br = new BufferedReader(new FileReader("Formulas.txt"))) {
+		 //revisar 
+//		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").toExternalForm()))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/ficheros/Formulas.json"))) {
 		    String linea;
 		    while ((linea = br.readLine()) != null) {
 		        fichero += linea;
