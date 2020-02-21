@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -29,7 +30,7 @@
             </Lighting>
          </effect>
       </Separator>
-      <TextArea fx:id="descripcionTextArea" editable="false" focusTraversable="false" />
+      <TextArea fx:id="descripcionTextArea" editable="false" focusTraversable="false" wrapText="true" />
       <GridPane hgap="5.0">
          <VBox.margin>
             <Insets bottom="10.0" />
@@ -50,7 +51,10 @@
             <Insets right="5.0" />
          </padding>
       </GridPane>
-      <JFXButton fx:id="calcularButton" onAction="#onCalcular" style="-fx-background-color: lightgrey;" text="Calcular" />
+      <JFXButton fx:id="calcularButton" onAction="#onCalcular" style="-fx-background-color: lightgrey;" text="Calcular">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
    </children>
    <padding>
       <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
