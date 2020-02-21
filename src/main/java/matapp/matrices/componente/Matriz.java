@@ -12,14 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import matapp.utils.FormulaUtils;
 
 public class Matriz extends GridPane{
 
 	
 	private ObjectProperty<SimpleMatrix> ma = new SimpleObjectProperty<SimpleMatrix>(new SimpleMatrix(1, 1));//matriz que devuelve o recibe
 	private BooleanProperty edit = new SimpleBooleanProperty();//Operacion con la mtriz
-	
+	private BooleanProperty vector = new SimpleBooleanProperty();//Operacion con la mtriz
+
 	public Matriz() {
 		super();	
 		setHgap(10);
@@ -28,7 +28,10 @@ public class Matriz extends GridPane{
 		generarMatriz();
 		ma.addListener((o, ov, nv)->generarTamanoGridPane());
 		edit.addListener((o, ov, nv)->generarMatriz());
+		ma.addListener((o, ov, nv)->vectorValue());
 	}
+
+	private void vectorValue(){vector.setValue(ma.getValue().isVector());}
 
 	private void generarTamanoGridPane() {
 		getColumnConstraints().clear();
@@ -61,6 +64,8 @@ public class Matriz extends GridPane{
 				}
 			}
 		}
+
+		
 	}
 
 	
@@ -108,5 +113,20 @@ public class Matriz extends GridPane{
 	public final void setEdit(final boolean edit) {
 		this.editProperty().set(edit);
 	}
+
+	public final BooleanProperty vectorProperty() {
+		return this.vector;
+	}
+	
+
+	public final boolean isVector() {
+		return this.vectorProperty().get();
+	}
+	
+
+	public final void setVector(final boolean vector) {
+		this.vectorProperty().set(vector);
+	}
+	
 	
 }

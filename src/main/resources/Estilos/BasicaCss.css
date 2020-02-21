@@ -1,0 +1,24 @@
+#root{
+	-fx-background-color:#FFDECA;
+}
+
+.button{
+	-fx-font-family: Arial;
+	-fx-font-weight: bold ;
+	-fx-font-style:italic;
+	-fx-text-fill: white;
+}
+
+.button:hover{
+	-fx-background-color:#F9660C;
+	-fx-text-fill: black;
+	-fx-font-style:oblique;
+}
+.numbers{
+	-fx-background-color:#E57D3D;
+}
+.operator{
+	-fx-background-color:#CB5106;
+}
+
+

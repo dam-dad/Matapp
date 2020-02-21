@@ -7,17 +7,18 @@ import java.util.ResourceBundle;
 
 import org.ejml.simple.SimpleMatrix;
 
-import com.jfoenix.controls.JFXButton;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import matapp.matrices.componente.Matriz;
@@ -26,12 +27,12 @@ import matapp.utils.FormulaUtils;
 public class MatrixController implements Initializable {
 
 	
-	int i;
-	private Matriz m= new Matriz();
+	private int i;
+	private SimpleMatrix m = new SimpleMatrix();
 	
 	//View
     @FXML
-    private HBox root;
+    private BorderPane root;
 
     @FXML
     private Matriz matrixOperador;
@@ -41,21 +42,51 @@ public class MatrixController implements Initializable {
     private VBox resultBox;
     
     @FXML
-    private JFXButton resultButton;
+    private Button resultButton;
     
     @FXML
-    private JFXButton moreRowButton;
+    private Button moreRowButton;
 
     @FXML
-    private JFXButton lessRowButton;
+    private Button lessRowButton;
 
     @FXML
-    private JFXButton lessColumnButton;
+    private Button lessColumnButton;
 
     @FXML
-    private JFXButton moreColumnButton;
+    private Button moreColumnButton;
     
+    @FXML
+    private Button inverseButton;
 
+    @FXML
+    private Button orthogonalButton;
+
+    @FXML
+    private Button negativeButton;
+
+    @FXML
+    private Button determinantButton;
+
+
+    @FXML
+    private Button additionButton;
+
+    @FXML
+    private Button subtractionButton;
+
+    @FXML
+    private Button divideButton;
+
+    @FXML
+    private Button multiplyButton;
+
+    @FXML
+    private Button diagonalButton;
+    
+    @FXML
+    private Label isVectorLabel;
+    
     public MatrixController() {
 		 try { 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CalculadoraMatricesView.fxml"));
@@ -71,9 +102,33 @@ public class MatrixController implements Initializable {
     	
     	matrixOperador.setEdit(true);
     	resultButton.setDisable(true);
+    	try {
+			inverseButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "A^{-1}",15, Color.white)));
+			orthogonalButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "A^{t}",15, Color.white)));
+			negativeButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "-A",15, Color.white)));
+			determinantButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "|A|",15, Color.white)));
+			additionButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "+",15, Color.white)));
+			subtractionButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "-",15, Color.white)));
+			divideButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "/",15, Color.white)) );
+			multiplyButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "*",15, Color.white)));
+			resultButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "=",15, Color.white)));
+			diagonalButton.setGraphic(new ImageView(FormulaUtils.formulaToImage( "diagonal",15, Color.white)));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	matrixOperador.maProperty().addListener((o, ov, nv)->vectorFuncion());
     
 	}
-    public Image matrixToImage(SimpleMatrix matrixImage) {
+    private void vectorFuncion() {
+    	if(matrixOperador.isVector()) {
+    		isVectorLabel.setText("Es Vector");
+    	}else {
+    		isVectorLabel.setText("No es Vector");
+    	}
+	}
+
+	public Image matrixToImage(SimpleMatrix matrixImage) {
     	Image resu= null;
     	String matrixIntroduce = "\\begin{Bmatrix}\n";
     	
@@ -95,7 +150,7 @@ public class MatrixController implements Initializable {
     
     	try {
 			resu =FormulaUtils.formulaToImage(matrixIntroduce + 
-					"\\end{Bmatrix}",10, Color.black);
+					"\\end{Bmatrix}",10, Color.BLACK);
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -108,17 +163,13 @@ public class MatrixController implements Initializable {
     
     @FXML
     void onResultAction(ActionEvent event) {
-    	//resultButton.setDisable(true);
-    	Matriz mat = new Matriz();
-    	mat.setMa(matrixOperador.getMa());
-    	resultBox.getChildren().add(0, new ImageView(matrixToImage(mat.getMa())));
+    	resultBox.getChildren().add(0, new ImageView(matrixToImage(matrixOperador.getMa())));
     	Matriz mr = new Matriz();
 
 		if(i ==1) {
 			//Suma
 			try {
-				SimpleMatrix resul = m.getMa().plus(mat.getMa());
-				System.out.println(m.getMa());
+				SimpleMatrix resul = m.plus(matrixOperador.getMa());
 		    	mr.setMa(resul);
 			}catch(java.lang.IllegalArgumentException e) {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -130,7 +181,7 @@ public class MatrixController implements Initializable {
 			//Resta
 			try {
 				//No funciona
-				SimpleMatrix resul = m.getMa().plus(mat.getMa().negative());
+				SimpleMatrix resul = m.plus(matrixOperador.getMa().negative());
 				System.out.println(resul);
 		    	mr.setMa(resul);
 			}catch(java.lang.IllegalArgumentException e) {
@@ -141,11 +192,11 @@ public class MatrixController implements Initializable {
 			}
 		}else if(i ==4) {
 			//Multiplicacion
-			SimpleMatrix resul = m.getMa().mult(mat.getMa());
+			SimpleMatrix resul = m.mult(matrixOperador.getMa());
 	    	mr.setMa(resul);
 		}else {
 			//Division
-			SimpleMatrix resul = m.getMa().divide(matrixOperador.getMa().get(0, 0));
+			SimpleMatrix resul = m.divide(matrixOperador.getMa().get(0, 0));
 			System.out.println(matrixOperador.getMa().get(0, 0));
 			mr.setMa(resul);
 			lessColumnButton.setDisable(false);
@@ -154,32 +205,27 @@ public class MatrixController implements Initializable {
 	    	moreRowButton.setDisable(false);
 		
 		}
-		
+		resultButton.setDisable(true);
 		resultBox.getChildren().add(0,new Label("="));
     	resultBox.getChildren().add(0,new ImageView(matrixToImage(mr.getMa())));
     	matrixOperador.setMa(mr.getMa());
 	}
 
-	private void NewMatrixDimension() {
-//		matrixOperador.setMa(new SimpleMatrix(rowSpinner.getValue(), columnSpinner.getValue()));
-	}
 
 	@FXML
     void onAddtionAction(ActionEvent event) {
-		m.setMa(matrixOperador.getMa());
-		System.out.println(m.getMa());
-		resultBox.getChildren().add(0, new ImageView(matrixToImage(m.getMa())));
+		m = matrixOperador.getMa().copy();
+		System.out.println(m);
+		resultBox.getChildren().add(0, new ImageView(matrixToImage(m)));
     	resultBox.getChildren().add(0,new Label(" + "));
     	resultButton.setDisable(false);
-		System.out.println(m.getMa());
-
     	i =1;
     	
     }
 	@FXML
     void onSubtrectionAction(ActionEvent event) {
-    	m.setMa(matrixOperador.getMa());
-    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m.getMa())));
+    	m=matrixOperador.getMa().copy();
+    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m)));
     	resultBox.getChildren().add(0,new Label(" - "));
     	resultButton.setDisable(false);
     	i =2;
@@ -189,8 +235,8 @@ public class MatrixController implements Initializable {
 
     @FXML
     void onDivideAction(ActionEvent event) {
-    	m.setMa(matrixOperador.getMa());
-    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m.getMa())));
+    	m=matrixOperador.getMa().copy();
+    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m)));
     	resultBox.getChildren().add(0,new Label(" / "));
     	resultButton.setDisable(false);
     	i =3;
@@ -204,8 +250,8 @@ public class MatrixController implements Initializable {
 
     @FXML
     void onMultiplyAction(ActionEvent event) {
-    	m.setMa(matrixOperador.getMa());
-    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m.getMa())));
+    	m=matrixOperador.getMa().copy();
+    	resultBox.getChildren().add(0,new ImageView(matrixToImage(m)));
     	resultBox.getChildren().add(0,new Label(" * "));
     	resultButton.setDisable(false);
     	i =3;
@@ -218,6 +264,7 @@ public class MatrixController implements Initializable {
     	mat.setEdit(false);
     	double resulDeterminat = matrixOperador.getMa().determinant();
     	resultBox.getChildren().add(0,new Label("|A| : "+resulDeterminat));
+    	resultBox.getChildren().add(0, new Separator());
     }
 
     @FXML
@@ -225,11 +272,10 @@ public class MatrixController implements Initializable {
     	Matriz mat = new Matriz();
     	mat.setMa(matrixOperador.getMa());
     	mat.setEdit(false);
-    	SimpleMatrix maResult = matrixOperador.getMa().extractDiag();
-    	Matriz mr = new Matriz();
-    	mr.setMa(maResult);
-    	resultBox.getChildren().add(0,new HBox(new Label("Diagonal : "),mr));
-    	
+    	SimpleMatrix maResult = matrixOperador.getMa().extractDiag();  	
+    	resultBox.getChildren().add(0,new HBox(new Label("Diagonal : "),new ImageView(matrixToImage(maResult))));
+    	resultBox.getChildren().add(0, new Separator());
+
     }
 
 
@@ -239,9 +285,9 @@ public class MatrixController implements Initializable {
     	mat.setMa(matrixOperador.getMa());
     	mat.setEdit(false);
     	SimpleMatrix maResult = matrixOperador.getMa().invert();
-    	Matriz mr = new Matriz();
-    	mr.setMa(maResult);
     	resultBox.getChildren().add(0,new HBox(new Label("A^-1 : "), new ImageView(matrixToImage(maResult))));
+    	resultBox.getChildren().add(0, new Separator());
+
     }
 
     @FXML
@@ -250,9 +296,9 @@ public class MatrixController implements Initializable {
     	mat.setMa(matrixOperador.getMa());
     	mat.setEdit(false);
        	SimpleMatrix maResult = matrixOperador.getMa().transpose();
-    	Matriz mr = new Matriz();
-    	mr.setMa(maResult);
     	resultBox.getChildren().add(0,new HBox(new Label("A^t : "),new ImageView(matrixToImage(maResult))));
+    	resultBox.getChildren().add(0, new Separator());
+
     }
 
     @FXML
@@ -261,25 +307,12 @@ public class MatrixController implements Initializable {
     	mat.setMa(matrixOperador.getMa());
     	mat.setEdit(false);
        	SimpleMatrix maResult = matrixOperador.getMa().negative();
-    	Matriz mr = new Matriz();
-    	mr.setMa(maResult);
     	resultBox.getChildren().add(0 , new ImageView(matrixToImage(maResult)));
+    	resultBox.getChildren().add(0, new Separator());
+
     }
 
 
-    @FXML
-    void onVectorAction(ActionEvent event) {
-    	Matriz mat = new Matriz();
-    	mat.setMa(matrixOperador.getMa());
-    	mat.setEdit(false);
-    	boolean vector = matrixOperador.getMa().isVector();
-    	if(vector) {
-    		resultBox.getChildren().add(0,new HBox(new ImageView(matrixToImage(mat.getMa())),new Label("  Es Vector")));
-    	}else {
-    		resultBox.getChildren().add(0,new HBox(new ImageView(matrixToImage(mat.getMa())),new Label("  No es Vector")));
-    	}
-    	
-    }
     @FXML
     void onLessColumnButtonAction(ActionEvent event) {
     	if( matrixOperador.getMa().numCols()>1) {
@@ -316,11 +349,11 @@ public class MatrixController implements Initializable {
     	matrixOperador.setMa(maR);
     }
 
-	public HBox getRoot() {
+	public BorderPane getRoot() {
 		return root;
 	}
 
-	public void setRoot(HBox root) {
+	public void setRoot(BorderPane root) {
 		this.root = root;
 	}
 

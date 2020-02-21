@@ -11,10 +11,10 @@
    <children>
       <JFXButton fx:id="estandarButton" maxWidth="1.7976931348623157E308" text="Estándar">
          <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+            <LinearGradient endX="1.0" endY="0.6258992805755396" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
-                  <Stop color="#1bd7d4" />
-                  <Stop color="#2631c9" offset="1.0" />
+                  <Stop color="#d68c1c" />
+                  <Stop color="#c65425" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
@@ -24,10 +24,10 @@
       </JFXButton>
       <JFXButton fx:id="binariaButton" maxWidth="1.7976931348623157E308" text="Binaria">
          <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
+            <LinearGradient endX="0.7458033573141487" endY="1.0" startX="0.10633778691332653" startY="0.25721137375813635">
                <stops>
-                  <Stop color="#1bd7d4" />
-                  <Stop color="#2631c9" offset="1.0" />
+                  <Stop color="#ccd61c" />
+                  <Stop color="#fff81ffc" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
@@ -53,8 +53,8 @@
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
-                  <Stop color="#1bd7d4" />
-                  <Stop color="#2631c9" offset="1.0" />
+                  <Stop color="#38035e" />
+                  <Stop color="#aa0bee" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
