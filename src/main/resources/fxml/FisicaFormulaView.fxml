@@ -46,6 +46,7 @@
          <children>
             <VBox fx:id="parametrosContenedorVBox" spacing="5.0" />
             <ImageView fx:id="expresionImageView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="resultadoImageView" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets right="5.0" />

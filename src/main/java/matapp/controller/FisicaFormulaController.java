@@ -43,6 +43,9 @@ public class FisicaFormulaController implements Initializable{
 
     @FXML
     private ImageView expresionImageView;
+    
+    @FXML
+    private ImageView resultadoImageView;
 
     @FXML
     private JFXButton calcularButton;
@@ -50,6 +53,8 @@ public class FisicaFormulaController implements Initializable{
     ObjectProperty<Formula>formula=new SimpleObjectProperty<>();
 
     ObjectProperty<Image> imagen=new SimpleObjectProperty<>();
+    
+    ObjectProperty<Image> resultadoImagen=new SimpleObjectProperty<>();
     
     Parametro parametro;
     
@@ -87,6 +92,7 @@ public class FisicaFormulaController implements Initializable{
     	parametrosContenedorVBox.getChildren().clear();
     	parametrosContenedorVBox.getChildren().add(parametro);
     	expresionImageView.imageProperty().bind(imagen);
+    	resultadoImageView.imageProperty().bind(resultadoImagen);
     	crearImagen(formula.get().getImgExpresion());
 //    	calcularButton.disableProperty().bind(parametro.valorTextProperty()); buscar la menarea de desabilitar elboton cuando no esta rellando los datos
     	
@@ -100,7 +106,12 @@ public class FisicaFormulaController implements Initializable{
 	}
 	@FXML
 	void onCalcular(ActionEvent event) {
-		System.out.println(parametro.calcular());
+		try {
+			this.resultadoImagen.set(FormulaUtils.formulaToImage(formula.get().getResult().getName()+"="
+		+ parametro.calcular(), 30, Color.black));
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	public VBox getRoot() {

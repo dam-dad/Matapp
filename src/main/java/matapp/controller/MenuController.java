@@ -11,6 +11,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -76,7 +77,7 @@ public class MenuController implements Initializable{
 		transiction=new HamburgerBackArrowBasicTransition(menuHamburger);
 		//controllers
 		slidePaneMenuController=new SlidePaneMenuController();
-		fisicaMainController=new FisicaMainController();
+		fisicaMainController=new FisicaMainController(this);
 		matrizController = new MatrixController();
 		binarioController= new BinarioController();
 		basicaController = new CalculadoraBasicaController();
@@ -142,8 +143,8 @@ public class MenuController implements Initializable{
 	
 	private void onFisicaButton() {
 		tipoCalculadoraLabel.setText("Física");
-		contentBorder.setCenter(fisicaMainController.getRoot());
-		
+//		contentBorder.setCenter(fisicaMainController.getRoot());
+		setContent(fisicaMainController.getRoot());
 		transiction.setRate(transiction.getRate()*-1);
 		transiction.play();
 		menuDrawer.open();
@@ -153,4 +154,12 @@ public class MenuController implements Initializable{
 	public AnchorPane getRoot() {
 		return root;
 	}
+	
+	public BorderPane getContent() {
+		return contentBorder;
+	}
+	public void setContent(Node value) {//nos permitirá cambiar el contenido de manera externa
+		contentBorder.setCenter(value);
+	}
+	
 }

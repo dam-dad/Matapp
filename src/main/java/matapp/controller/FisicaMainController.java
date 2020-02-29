@@ -70,6 +70,7 @@ public class FisicaMainController implements Initializable{
     ObjectProperty<Formula> formulaSeleccionada=new SimpleObjectProperty<>();
     
     
+    MenuController menuController;
     
     
     ArrayList <FormulaVista> componentesFormulaVista=new ArrayList<>();
@@ -89,7 +90,18 @@ public class FisicaMainController implements Initializable{
 			e.printStackTrace();
 		}
     }    	
-    
+    public FisicaMainController(MenuController menuController) {
+    	
+    	 try {
+			 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FisicaMainView.fxml"));
+			 loader.setController(this);
+			 loader.load();
+		 } catch (IOException e) {
+			
+			 e.printStackTrace();
+		 }
+    	 this.menuController=menuController;
+     } 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//bindeos
@@ -134,11 +146,13 @@ public class FisicaMainController implements Initializable{
 		Formula aux=formulaSeleccionada.get();
 		
 		fisicaFormulaController=new FisicaFormulaController(aux);
-		stage=new Stage();
-		Scene scene=new Scene(fisicaFormulaController.getRoot());
-		stage.setTitle("Matapp");
-		stage.setScene(scene);
-		stage.show();
+		
+//		stage=new Stage();
+//		Scene scene=new Scene(fisicaFormulaController.getRoot());
+//		stage.setTitle("Matapp");
+//		stage.setScene(scene);
+//		stage.show();
+		menuController.setContent(fisicaFormulaController.getRoot());
 		
 	}
 	private void onCargarFicheroAction() {

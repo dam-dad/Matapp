@@ -16,7 +16,9 @@ import javafx.scene.layout.VBox;
 import matapp.utils.FormulaUtils;
 
 public class FormulaVista extends VBox{
-	
+	/**
+	 * @author Kilian
+	 */
 	//property
 	StringProperty nombreFormula=new SimpleStringProperty();
 	ObjectProperty<Image> formula=new SimpleObjectProperty<>();
@@ -38,7 +40,6 @@ public class FormulaVista extends VBox{
 //	}
 	public FormulaVista(String nombre,String formulaExpression) {
 		super();
-//		setPrefSize(150, 140);
 		setPrefHeight(80);
 		setPadding(new Insets(5, 5, 5, 20));
 		setSpacing(5);

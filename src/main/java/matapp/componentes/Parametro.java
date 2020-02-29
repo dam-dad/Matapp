@@ -22,8 +22,13 @@ import matapp.formulas.Variable;
 import static matapp.expreval.ExprEval.*;
 
 public class Parametro extends GridPane{
-	
-	ListProperty<JFXTextField> valorText=new SimpleListProperty<>(FXCollections.observableArrayList());
+	/**
+	 * @author Kilian González
+	 * 
+	 * 
+	 */
+	ListProperty<Label> nombreLabel=new SimpleListProperty<>(FXCollections.observableArrayList());
+	ListProperty<JFXTextField> valorText=new SimpleListProperty<>(FXCollections.observableArrayList());//lista de jfxTexfields donde se introduciran los valores
 	Formula formula;
 	public Parametro(Formula formula) {
 		super();
@@ -32,12 +37,13 @@ public class Parametro extends GridPane{
 
 		setAlignment(Pos.CENTER_LEFT);
 		final NumberValidator numberValidator = new NumberValidator();
-		numberValidator.setMessage("Solo números");
+		
 		JFXTextField auxTextField=null;
 		Label auxLabel=null;
 		for(int i=0;i<formula.getVariables().size();i++) {
 			auxTextField=new  JFXTextField();
 			valorText.get().add(auxTextField);
+			
 			valorText.get().get(i).getValidators().add(numberValidator);
 			int j=i;
 			valorText.get().get(i).setOnKeyReleased(e ->
@@ -72,7 +78,7 @@ public class Parametro extends GridPane{
 			Double result = (Double) eval(formula.getExpression(), params.toArray(auxParams)); //LA E resultante es significa 10 elevado a...
 			
 			
-			return result+" "+formula.getResult().getMagnitud();
+			return result+"  "+formula.getResult().getMagnitud();
 		} catch (NumberFormatException e) {
 			return null;
 		}
