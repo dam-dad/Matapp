@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" spacing="5.0" stylesheets="@../Estilos/FisicaCss.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="nombreFormulaLabel" text="Label" />
       <Separator>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </GridPane>
-      <JFXButton fx:id="calcularButton" onAction="#onCalcular" style="-fx-background-color: lightgrey;" text="Calcular">
+      <JFXButton fx:id="calcularButton" onAction="#onCalcular" text="Calcular">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>

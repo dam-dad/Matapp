@@ -1,5 +1,5 @@
 #root{
-	-fx-background-color:#FEFFDF;
+	-fx-background-color:#D8F3FF;
 }
 .button{
 	-fx-font-family: Arial;
@@ -9,16 +9,16 @@
 }
 
 .button:hover{
-	-fx-background-color:#F0FB01;
+	-fx-background-color:#36C2FF;
 	-fx-text-fill: black;
 	-fx-font-style:oblique;
 }
 .operatorsOne{
-	-fx-background-color:#C0C816;
+	-fx-background-color:#098CC4;
 }
 .operatorsBasic{
-	-fx-background-color:#92972C;
+	-fx-background-color:#006490;
 }
 .numbersStyle{
-	-fx-background-color:#D0D831;
+	-fx-background-color:#36A7D8;
 }
