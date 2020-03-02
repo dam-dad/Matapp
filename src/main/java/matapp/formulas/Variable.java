@@ -4,7 +4,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Variable {
-
+	/**
+	 * @author Kilian González, Francisco Vargas
+	 * 
+	 * Clase de objetos tipo Variable los cuales poseeran una serie de atributos
+	 * 
+	 */
 	private StringProperty name = new SimpleStringProperty();//letra asignada F,v...
 	private StringProperty descripcion = new SimpleStringProperty();// significado de la variable Fuerza,velocidad...
 	private StringProperty magnitud =new SimpleStringProperty(); //Magnitud en la que se mide la variable kg, m/s ...

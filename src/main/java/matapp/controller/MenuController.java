@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -73,7 +74,7 @@ public class MenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// precargamos una imagen para aceerar la creación del resto de imagenes
+		// precargamos una imagen para acelerar la creación del resto de imagenes
 		try {
 			@SuppressWarnings("unused")
 			Image image = (FormulaUtils.formulaToImage("", 30, Color.black));
@@ -83,12 +84,7 @@ public class MenuController implements Initializable {
 
 		//transciciones
 		transiction=new HamburgerBackArrowBasicTransition(menuHamburger);
-		//controllers
-		slidePaneMenuController=new SlidePaneMenuController();
-		
-
-		// transciciones
-		transiction = new HamburgerBackArrowBasicTransition(menuHamburger);
+	
 		// controllers
 		slidePaneMenuController = new SlidePaneMenuController();
 		fisicaMainController=new FisicaMainController(this);

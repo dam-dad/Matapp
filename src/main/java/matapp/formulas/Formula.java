@@ -14,6 +14,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.ImageView;
 
 public class Formula {
+	/**
+	 * @author Kilian González, Francisco Vargas
+	 * 
+	 * Clase de objetos tipo Formula los cuales poseeran una serie de atributos
+	 * 
+	 */
 
 	private StringProperty name=new SimpleStringProperty();//nombre dado a la formula
 	private StringProperty description=new SimpleStringProperty();// descripcion de lo que debería hacer la fórmula

@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.transform.Translate;
@@ -45,6 +46,7 @@ public class Parametro extends GridPane{
 		
 		JFXTextField auxTextField=null;
 		Label auxLabel=null;
+		
 		//Recorremos todas las variables que posea la formula
 		for(int i=0;i<formula.getVariables().size();i++) {
 			auxTextField=new  JFXTextField();
@@ -59,18 +61,14 @@ public class Parametro extends GridPane{
 		    });
 			
 			auxLabel=new Label(this.formula.getVariables().get(i).getName());
-			auxLabel.setOnMouseEntered(e->{//Revisar, action correcto pero no sse eejcuta, seguramente deba de guardar los label en una lista como hice con las formulas en fisicamain
-				System.out.println(this.formula.getVariables().get(j).getDescripcion());
-						});
+			auxLabel.setTooltip(new Tooltip(formula.getVariables().get(i).getDescripcion()));
+			nombreLabel.add(auxLabel);
+			
 			//añadimos una fila por cada variable 
-			addRow(i, new Label(this.formula.getVariables().get(i).getName()),
+			addRow(i,nombreLabel.get().get(i),
 					valorText.get().get(i),
-					new Label(this.formula.getVariables().get(i).getMagnitud()));
-			 
+					new Label(this.formula.getVariables().get(i).getMagnitud()));	 
 		}
-		
-
-	  
 	}
 	public String calcular() {
 		

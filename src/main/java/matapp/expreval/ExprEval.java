@@ -9,6 +9,13 @@ import org.mozilla.javascript.Script;
 import org.mozilla.javascript.ScriptableObject;
 
 public class ExprEval {
+	/**
+	 * 
+	 * @author Francisco Vargas, Kilian González
+	 * 
+	 *Calcula la expresión matemtica que se le pase
+	 *
+	 */
 
 	private static Context context; 
 	

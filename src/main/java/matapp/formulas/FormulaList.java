@@ -10,6 +10,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class FormulaList {
+	/**
+	 * @author Kilian González, Francisco Vargas
+	 * 
+	 * Clase de objetos tipo FormulaList los cuales poseeran un listado de objetos tipo Formula
+	 * 
+	 */
 
 	private ListProperty<Category> categories = new SimpleListProperty<>(FXCollections.observableArrayList(new ArrayList<>()));//listado de categorias
 //	private ListProperty<Category> categories = new SimpleListProperty<>(FXCollections.observableArrayList(c -> new Observable[] {c.nameProperty()}));//listado de categorias

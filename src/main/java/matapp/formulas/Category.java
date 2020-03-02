@@ -10,6 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Category {
+	/**
+	 * @author Kilian González, Francisco Vargas
+	 * 
+	 * Clase de objetos tipo Category los cuales poseeran una serie de aributos
+	 */
 
 	private StringProperty name=new SimpleStringProperty();//nombre de la categoria Campo gravitatorio,campo electrico...
 	

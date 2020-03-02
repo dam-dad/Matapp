@@ -38,7 +38,7 @@ public class EjemploDeUso {
 			
 			System.out.println(result);
 		}
-		private static void sample5() {
+		private static void sample5() {//ejemplo para un arrayList
 			
 			
 			ArrayList<Param<?>> params=new ArrayList<>();

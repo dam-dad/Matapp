@@ -5,20 +5,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class SlidePaneMenuController implements Initializable{
-    //SlidePaneMenuView
+	/**
+	 *
+	 * @author Kilian González
+	 * 
+	 * Componente desplegable SlidePane el cual contendrá la lista de calculadoras que posee Mataap
+	 * 
+	 */
+    //View
 
 	@FXML
     private VBox root;

@@ -15,7 +15,14 @@ import uk.ac.ed.ph.snuggletex.SnuggleInput;
 import uk.ac.ed.ph.snuggletex.SnuggleSession;
 
 public class FormulaUtils {
-//comprobar si las librerias son las correctas 
+	/**
+	 * @author Francisco Vargas, Kilian González
+	 * @param formula
+	 * @param size
+	 * @param forecolor
+	 * @return
+	 * @throws IOException
+	 */
 	public static Image formulaToImage(String formula, int size, Color forecolor) throws IOException {
 		
 		SnuggleSession session = new SnuggleEngine().createSession();

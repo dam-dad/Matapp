@@ -11,8 +11,11 @@ import com.google.gson.Gson;
 
 public class FicheroFormulas {
 	/**
-	 * Clase para generar el fichero base en formato gson de las formulas físicas
+	 * 
+	 * @author Kilian González
 	 * @param args
+	 * 
+	 * Clase para generar el fichero base en formato gson de las formulas físicas
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -129,7 +132,7 @@ public class FicheroFormulas {
 		Category c2=new Category("Órbitas");
 		c2.getFormulas().addAll(f10);
 		
-		//finalmente lo añadimos a la lista copleta
+		//finalmente lo añadimos a la lista completa
 		FormulaList fL=new FormulaList();
 		fL.getCategories().addAll(c1,c2);
 		

@@ -29,6 +29,15 @@ import matapp.formulas.Variable;
 import matapp.utils.FormulaUtils;
 
 public class FisicaFormulaController implements Initializable{
+	/**
+	 * @author Kilian González
+	 * 
+	 * Clase que nos permite ver lso datos de la formula la cual sea seleccionada
+	 * y realizar cálculos con ducha fórmula
+	 * 
+	 */
+	
+	//View
 	@FXML
     private VBox root;
 
@@ -61,7 +70,10 @@ public class FisicaFormulaController implements Initializable{
     
     Parametro parametro;
     
-    public FisicaFormulaController(Formula formula) {
+    //controller 
+    FisicaMainController fisicaMaincontroller;
+    
+    public FisicaFormulaController(Formula formula,FisicaMainController fisicaMaincontroller) {
     	try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FisicaFormulaView.fxml"));
 			loader.setController(this);
@@ -72,6 +84,7 @@ public class FisicaFormulaController implements Initializable{
 		}
     	
     	this.formula.set(formula);
+    	this.fisicaMaincontroller=fisicaMaincontroller;
     	rellenarDatos();
     }
     
@@ -83,17 +96,13 @@ public class FisicaFormulaController implements Initializable{
 	private void rellenarDatos() {
 		nombreFormulaLabel.textProperty().bind(formula.get().nameProperty());
     	descripcionTextArea.textProperty().bind(formula.get().descriptionProperty());
-    	
     	parametro=new Parametro(formula.get());
-
-    	
+    	//limpiamos y añadimos el componente parametro con todos los parametros de la fórmula
     	parametrosContenedorVBox.getChildren().clear();
     	parametrosContenedorVBox.getChildren().add(parametro);
     	expresionImageView.imageProperty().bind(imagen);
     	resultadoImageView.imageProperty().bind(resultadoImagen);
-    	crearImagen(formula.get().getImgExpresion());
-//    	calcularButton.disableProperty().bind(parametro.valorTextProperty()); buscar la menarea de desabilitar elboton cuando no esta rellando los datos
-    	
+    	crearImagen(formula.get().getImgExpresion());    	
 	}
 	private void crearImagen(String formulaExpression) {
 		try {
@@ -103,17 +112,16 @@ public class FisicaFormulaController implements Initializable{
 		}
 	}
 	@FXML
-	void onCalcular(ActionEvent event) {
+	void onCalcular(ActionEvent event) {//crea una imagen a partir del resultado de la formula
 		try {
 			this.resultadoImagen.set(FormulaUtils.formulaToImage(formula.get().getResult().getName()+"="
 		+ parametro.calcular(), 30, Color.black));
-		} catch (IOException e) {
-			
-		}
+		} catch (IOException e) {}
 	}
+	
 	@FXML
-	void onVolver(ActionEvent event) {
-		FisicaMainController fisicaMainController=new FisicaMainController();
+	void onVolver(ActionEvent event) {//vuelve al menu principal de la calculadora física
+		fisicaMaincontroller.menuController.setContent(fisicaMaincontroller.getRoot());
 	}
 	
 	public VBox getRoot() {

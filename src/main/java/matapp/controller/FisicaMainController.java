@@ -57,7 +57,6 @@ public class FisicaMainController implements Initializable{
 //	model
     ObjectProperty<FormulaList> formulaListObject=new SimpleObjectProperty<>();
     
-//    ListProperty<Category> listaCategorias=new SimpleListProperty<>(FXCollections.observableArrayList());
     ListProperty<Category> categorias=new SimpleListProperty<>();
     
     ObjectProperty<Category> categoriaSeleccionada=new SimpleObjectProperty<>();
@@ -66,7 +65,7 @@ public class FisicaMainController implements Initializable{
     
     ObjectProperty<Formula> formulaSeleccionada=new SimpleObjectProperty<>();
     
-    
+    //
     MenuController menuController;
     
     
@@ -76,17 +75,17 @@ public class FisicaMainController implements Initializable{
     
     Stage stage;
     
-    public FisicaMainController() {
-    	
-    	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FisicaMainView.fxml"));
-			loader.setController(this);
-			loader.load();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-    }    	
+//    public FisicaMainController() {
+//    	
+//    	try {
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FisicaMainView.fxml"));
+//			loader.setController(this);
+//			loader.load();
+//		} catch (IOException e) {
+//			
+//			e.printStackTrace();
+//		}
+//    }    	
     public FisicaMainController(MenuController menuController) {
     	
     	 try {
@@ -142,7 +141,7 @@ public class FisicaMainController implements Initializable{
 		formulaSeleccionada.set(categoriaSeleccionada.get().getFormulas().get(l));
 		Formula aux=formulaSeleccionada.get();
 		
-		fisicaFormulaController=new FisicaFormulaController(aux);
+		fisicaFormulaController=new FisicaFormulaController(aux,this);
 		
 //		stage=new Stage();
 //		Scene scene=new Scene(fisicaFormulaController.getRoot());
