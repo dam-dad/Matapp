@@ -1,7 +1,12 @@
 #root{
 	-fx-background-color:#ECCCFF;
 }
-
+.scrollPane{
+	-fx-background-color:#ECCCFF;
+}
+#matriz{
+	-fx-background-color:#ECCCFF;
+}
 .button{
 	-fx-font-family: Arial;
 	-fx-font-weight: bold ;
@@ -24,7 +29,31 @@
 	-fx-background-color:#B393C7;
 
 }
+.scroll-pane{
+	-fx-background-color:#ECCCFF;
+}
+.scroll-bar{
+	-fx-background-color:#ECCCFF;
+}
+.scroll-pane > .corner {
+    -fx-background-color: #ECCCFF;
+}
 #isVectorLabel{
 	-fx-font-family: Arial;
 	-fx-font-weight: bold ;
+}
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #760084;
+    -fx-background-radius: 5em;
+}
+.scroll-pane > .viewport{
+	-fx-background-color: #ECCCFF;
 }

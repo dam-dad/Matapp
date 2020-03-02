@@ -22,13 +22,14 @@ public class Matriz extends GridPane{
 
 	public Matriz() {
 		super();	
-		setHgap(10);
-		setVgap(2);
+		setHgap(5);
+		setVgap(5);
 		setGridLinesVisible(true);
 		generarMatriz();
 		ma.addListener((o, ov, nv)->generarTamanoGridPane());
 		edit.addListener((o, ov, nv)->generarMatriz());
 		ma.addListener((o, ov, nv)->vectorValue());
+		
 	}
 
 	private void vectorValue(){vector.setValue(ma.getValue().isVector());}
@@ -56,10 +57,15 @@ public class Matriz extends GridPane{
 					final int col = i;
 					final int row = j;
 					TextField tf = new TextField(""+ma.get().get(j,i));
+					tf.setMinWidth(80);
+					tf.setMaxWidth(80);
 					tf.textProperty().addListener((o, ov, nv) -> onTextChanged(col, row, o, ov, nv));
 					add(tf, i, j);
 				}else {
-					add(new Label(""+ma.get().get(j,i)), i, j);
+					Label labe = new Label(""+ma.get().get(j,i));
+					labe.setMaxWidth(80);
+					labe.setMinWidth(80);
+					add(labe, i, j);
 					setGridLinesVisible(true);
 				}
 			}

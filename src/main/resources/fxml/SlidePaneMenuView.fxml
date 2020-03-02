@@ -2,12 +2,14 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" prefWidth="150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" prefHeight="217.0" prefWidth="166.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton fx:id="estandarButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Estándar">
          <ripplerFill>
@@ -21,14 +23,21 @@
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconos/6c35e17950c30af1bd60f6aeb40e705f-icono-de-la-escuela-de-trazo-calculadora-by-vexels.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXButton fx:id="binariaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Programador">
          <ripplerFill>
 
             <LinearGradient endX="0.7458033573141487" endY="1.0" startX="0.10633778691332653" startY="0.25721137375813635">
                <stops>
-                  <Stop color="#ccd61c" />
-                  <Stop color="#fff81ffc" offset="1.0" />
+                  <Stop color="#1e5fd4" />
+                  <Stop color="#0ea6e8fc" offset="1.0" />
 
                </stops>
             </LinearGradient>
@@ -36,6 +45,13 @@
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconos/69084.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXButton fx:id="fisicaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Física">
          <ripplerFill>
@@ -50,6 +66,13 @@
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconos/atom-1294810_960_720.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXButton fx:id="matricesButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Matrices">
          <ripplerFill>
@@ -63,19 +86,33 @@
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconos/1774127.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXButton fx:id="notaButton" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Nota">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.24761904761904763">
                <stops>
-                  <Stop color="#1bd7d4" />
-                  <Stop color="#2631c9" offset="1.0" />
+                  <Stop color="#720211" />
+                  <Stop color="#dd0f16" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../iconos/58829.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
    </children>
    <padding>

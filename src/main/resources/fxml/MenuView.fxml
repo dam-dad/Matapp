@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="root" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane fx:id="contentBorder" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="contentBorder" prefHeight="200.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -28,6 +28,6 @@
             </HBox>
          </top>
       </BorderPane>
-      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="150.0" direction="RIGHT" layoutX="-177.0" maxWidth="-Infinity" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-180.0" AnchorPane.topAnchor="0.0" />
+      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="150.0" direction="RIGHT" layoutX="-206.0" maxWidth="-Infinity" prefHeight="480.0" prefWidth="179.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-206.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

@@ -1,0 +1,53 @@
+#root{
+	-fx-background-color:#DEFFDB;
+}
+
+.button{
+	-fx-background-color:#32D618;
+	-fx-font-family: Arial;
+	-fx-font-weight: bold ;
+	-fx-font-style:italic;
+}
+
+.button:hover{
+	-fx-background-color:#138A00;
+	-fx-text-fill: white;
+	-fx-font-style:oblique;
+}
+#categoriasList{
+	-fx-background-color:#DEFFDB;
+}
+.list-cell:selected{
+	-fx-background-color: #6CB061;
+    -fx-text-fill: white;
+}
+
+#contenedorFormulasMasonry{
+	-fx-background-color:#6CB061;
+}
+.scroll-pane{
+	-fx-background-color:#DEFFDB;
+}
+.scroll-bar{
+	-fx-background-color:#DEFFDB;
+}
+#descripcionTextArea{
+	-fx-background-color:white;
+	-fx-text-fill: #26501F;
+	-fx-font-weight: bold ;
+}
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1B5B10;
+    -fx-background-radius: 5em;
+}
+.scroll-pane > .viewport{
+	-fx-background-color: #DEFFDB;
+}

@@ -1,0 +1,28 @@
+#root{
+	-fx-background-color:#FF9C9C;
+}
+.button{
+	-fx-font-family: Arial;
+	-fx-font-weight: bold ;
+	-fx-font-style:italic;
+	-fx-text-fill: white;
+	-fx-background-color:#FE4E32;
+}
+
+.button:hover{
+	-fx-background-color:#EE2505;
+	-fx-text-fill: black;
+	-fx-font-style:oblique;
+}
+.label{
+	-fx-font-family: Arial;
+	-fx-font-weight: bold ;
+	-fx-text-fill: white;
+}
+#respuestaLabel{
+	-fx-font-size:14;
+}
+#notaLabel{
+	-fx-font-size:20;
+	-fx-effect:dropshadow(gaussian, black, 10, 0.2, 2, 2);
+}
