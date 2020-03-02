@@ -17,27 +17,15 @@ import matapp.utils.FormulaUtils;
 
 public class FormulaVista extends VBox{
 	/**
-	 * @author Kilian
+	 * @author Kilian González 
+	 * 
+	 * Componente perzonalizado, muestra el nombre de la formula
+	 * además de su expresion matemática
 	 */
 	//property
-	StringProperty nombreFormula=new SimpleStringProperty();
-	ObjectProperty<Image> formula=new SimpleObjectProperty<>();
-//	public FormulaVista() {
-//		super();
-//		setPrefSize(150, 140);
-//		setPadding(new Insets(5, 5, 5, 20));
-//		setSpacing(5);
-//		setAlignment(Pos.TOP_CENTER);
-//		
-//		Label nombreFormulaLabel=new Label();
-//		nombreFormulaLabel.textProperty().bind(nombreFormula);
-//		ImageView formulaImage=new ImageView();
-//		formulaImage.fitWidthProperty();
-//		formulaImage.fitHeightProperty();
-//		formulaImage.imageProperty().bind(formula);
-//		
-//		getChildren().addAll(nombreFormulaLabel,formulaImage);
-//	}
+	StringProperty nombreFormula=new SimpleStringProperty();//nombre 
+	ObjectProperty<Image> formula=new SimpleObjectProperty<>();//imagen de la formula
+
 	public FormulaVista(String nombre,String formulaExpression) {
 		super();
 		setPrefHeight(80);
@@ -49,7 +37,6 @@ public class FormulaVista extends VBox{
 		nombreFormulaLabel.textProperty().bind(nombreFormula);
 		ImageView formulaImage=new ImageView();
 		formulaImage.fitWidthProperty();
-//		formulaImage.fitHeightProperty();
 		formulaImage.imageProperty().bind(formula);
 		
 		setNombreFormula(nombre);
@@ -58,14 +45,14 @@ public class FormulaVista extends VBox{
 		getChildren().addAll(nombreFormulaLabel,formulaImage);
 	}
 	
-	private void crearImagen(String formulaExpression) {
+	private void crearImagen(String formulaExpression) {//crea la imagen a partir de un expresion
 		try {
 			this.formula.set(FormulaUtils.formulaToImage(formulaExpression, 30, Color.black));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public final StringProperty nombreFormulaProperty() {
 		return this.nombreFormula;
 	}

@@ -25,10 +25,15 @@ public class Parametro extends GridPane{
 	/**
 	 * @author Kilian González
 	 * 
+	 * Componente personalizado, nos permite mostrar todos los parametros de la formula
+	 * para que así el usuario los rellene y lugo pueda calcular el resultado
 	 * 
 	 */
-	ListProperty<Label> nombreLabel=new SimpleListProperty<>(FXCollections.observableArrayList());
+	
+	//properties
+	ListProperty<Label> nombreLabel=new SimpleListProperty<>(FXCollections.observableArrayList());//nombre fórmula
 	ListProperty<JFXTextField> valorText=new SimpleListProperty<>(FXCollections.observableArrayList());//lista de jfxTexfields donde se introduciran los valores
+	
 	Formula formula;
 	public Parametro(Formula formula) {
 		super();
@@ -40,23 +45,24 @@ public class Parametro extends GridPane{
 		
 		JFXTextField auxTextField=null;
 		Label auxLabel=null;
+		//Recorremos todas las variables que posea la formula
 		for(int i=0;i<formula.getVariables().size();i++) {
 			auxTextField=new  JFXTextField();
 			valorText.get().add(auxTextField);
 			
-			valorText.get().get(i).getValidators().add(numberValidator);
+			valorText.get().get(i).getValidators().add(numberValidator);//le añadios a cada una un validador
 			int j=i;
-			valorText.get().get(i).setOnKeyReleased(e ->
-		    {
-		    	
+			//añadimos un listener para establecer ciertos criterios del validador 
+			valorText.get().get(i).setOnKeyReleased(e -> {
 		        if (!valorText.get().get(j).getText().equals(""))
 		        	valorText.get().get(j).validate();
 		    });
+			
 			auxLabel=new Label(this.formula.getVariables().get(i).getName());
 			auxLabel.setOnMouseEntered(e->{//Revisar, action correcto pero no sse eejcuta, seguramente deba de guardar los label en una lista como hice con las formulas en fisicamain
 				System.out.println(this.formula.getVariables().get(j).getDescripcion());
 						});
-			
+			//añadimos una fila por cada variable 
 			addRow(i, new Label(this.formula.getVariables().get(i).getName()),
 					valorText.get().get(i),
 					new Label(this.formula.getVariables().get(i).getMagnitud()));

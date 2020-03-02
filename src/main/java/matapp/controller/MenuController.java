@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -14,16 +13,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+
 import javafx.scene.layout.VBox;
 import matapp.utils.FormulaUtils;
 
 public class MenuController implements Initializable {
-	// MenuView
+	/**
+	 * @author Kilian González, Andrea Morales, Cristofer Díaz
+	 * 
+	 * Menú principal de la calculadora Matapp
+	 * 
+	 */
+	//View
 
 	@FXML
 	private AnchorPane root;
@@ -39,8 +43,10 @@ public class MenuController implements Initializable {
 
 	@FXML
 	private JFXDrawer menuDrawer;
+	
 	// tranciciones
 	HamburgerBackArrowBasicTransition transiction;
+	
 	// controllers
 	private SlidePaneMenuController slidePaneMenuController;
 
@@ -67,8 +73,9 @@ public class MenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// creamos una imagen que no vamos a usar
+		// precargamos una imagen para aceerar la creación del resto de imagenes
 		try {
+			@SuppressWarnings("unused")
 			Image image = (FormulaUtils.formulaToImage("", 30, Color.black));
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -85,14 +92,14 @@ public class MenuController implements Initializable {
 		// controllers
 		slidePaneMenuController = new SlidePaneMenuController();
 		fisicaMainController=new FisicaMainController(this);
-
 		matrizController = new MatrixController();
 		binarioController = new BinarioController();
 		basicaController = new CalculadoraBasicaController();
 		notaController = new NotaController();
 		
+		//establecemos esta calculadora como la predeterminada para abrir el programa
 		contentBorder.setCenter(basicaController.getRoot());
-
+		//cargamos nuestro slidePanel
 		VBox vBox = slidePaneMenuController.getRoot();
 		menuDrawer.setSidePane(vBox);
 
@@ -109,6 +116,7 @@ public class MenuController implements Initializable {
 				menuDrawer.open();// se abrirá
 			}
 		});
+		
 		// actions
 		slidePaneMenuController.getEstandarButton().setOnAction(e -> onEstandarButton());
 		slidePaneMenuController.getFisicaButton().setOnAction(e -> onFisicaButton());
@@ -117,7 +125,7 @@ public class MenuController implements Initializable {
 		slidePaneMenuController.getNotaButton().setOnAction(e -> onNotaButton());
 	}
 
-	private void onMatrizButton() {
+	private void onMatrizButton() {//calculadora Matriz
 		tipoCalculadoraLabel.setText("Matriz");
 		contentBorder.setCenter(matrizController.getRoot());
 
@@ -126,7 +134,7 @@ public class MenuController implements Initializable {
 		menuDrawer.open();// realmente lo estamos cerrando
 	}
 
-	private void onBinarioButton() {
+	private void onBinarioButton() {//caculadora de Programación
 		tipoCalculadoraLabel.setText("Programador");
 		contentBorder.setCenter(binarioController.getRoot());
 
@@ -135,7 +143,7 @@ public class MenuController implements Initializable {
 		menuDrawer.open();// realmente lo estamos cerrando
 	}
 
-	private void onEstandarButton() {// aquí nos encargaríamos de que se mostrase la calculadora especificada
+	private void onEstandarButton() {// Calculadora Estándar
 		tipoCalculadoraLabel.setText("Estándar");
 		contentBorder.setCenter(basicaController.getRoot());// aqui colocamos la calculadora esperada
 
@@ -144,7 +152,7 @@ public class MenuController implements Initializable {
 		menuDrawer.open();
 	}
 	
-	private void onNotaButton() {// aquí nos encargaríamos de que se mostrase la calculadora especificada
+	private void onNotaButton() {// Nota
 		tipoCalculadoraLabel.setText("Nota");
 		contentBorder.setCenter(notaController.getRoot());// aqui colocamos la calculadora esperada
 
@@ -153,14 +161,13 @@ public class MenuController implements Initializable {
 		menuDrawer.open();
 	}
 
-	private void onFisicaButton() {
+	private void onFisicaButton() {//Calculadora Física
 		tipoCalculadoraLabel.setText("Física");
 		contentBorder.setCenter(fisicaMainController.getRoot());
 		
 		transiction.setRate(transiction.getRate() * -1);
 		transiction.play();
 		menuDrawer.open();
-
 	}
 
 	public AnchorPane getRoot() {

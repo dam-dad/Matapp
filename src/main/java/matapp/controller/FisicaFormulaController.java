@@ -49,6 +49,9 @@ public class FisicaFormulaController implements Initializable{
 
     @FXML
     private JFXButton calcularButton;
+    
+    @FXML
+    private JFXButton volverButton;
     //model
     ObjectProperty<Formula>formula=new SimpleObjectProperty<>();
 
@@ -70,15 +73,10 @@ public class FisicaFormulaController implements Initializable{
     	
     	this.formula.set(formula);
     	rellenarDatos();
-    	
-    	
     }
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
-		
 		
 	}
 	
@@ -112,6 +110,10 @@ public class FisicaFormulaController implements Initializable{
 		} catch (IOException e) {
 			
 		}
+	}
+	@FXML
+	void onVolver(ActionEvent event) {
+		FisicaMainController fisicaMainController=new FisicaMainController();
 	}
 	
 	public VBox getRoot() {

@@ -14,16 +14,8 @@ import java.util.ResourceBundle;
 import org.hildan.fxgson.FxGson;
 
 import com.google.gson.Gson;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXMasonryPane;
-import com.jfoenix.controls.JFXScrollPane;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
 import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
@@ -33,7 +25,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -44,7 +35,13 @@ import matapp.formulas.Formula;
 import matapp.formulas.FormulaList;
 
 public class FisicaMainController implements Initializable{
-    //FisicaMainView
+	/**
+	 * @author Kilian González
+	 * 
+	 * Menú inicial de la calculadora física
+	 * 
+	 */
+    //View
     @FXML
     private VBox root;
     
