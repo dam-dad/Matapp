@@ -55,7 +55,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="volverButton" onAction="#onVolver" style="-fx-background-color: lightgrey;" text="Volver">
+                  <JFXButton fx:id="volverButton" onAction="#onVolver" text="Volver">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
