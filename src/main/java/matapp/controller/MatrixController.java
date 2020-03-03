@@ -227,6 +227,7 @@ public class MatrixController implements Initializable {
 		resultButton.setDisable(true);
 		resultBox.getChildren().add(0,new Label("="));
     	resultBox.getChildren().add(0,new ImageView(matrixToImage(mr.getMa())));
+    	resultBox.getChildren().add(0, new Separator());
     	matrixOperador.setMa(mr.getMa());
     	Platform.runLater(scrollResult::requestLayout);
 	}
