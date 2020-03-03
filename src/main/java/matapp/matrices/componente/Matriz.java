@@ -14,12 +14,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 public class Matriz extends GridPane{
-
+	/**
+	 * @author Andrea Morales
+	 * 
+	 *Componente Matriz donde meteremos nuestra matriz pa despues operarla
+	 * 
+	 */
 	
+	//Modelo
 	private ObjectProperty<SimpleMatrix> ma = new SimpleObjectProperty<SimpleMatrix>(new SimpleMatrix(1, 1));//matriz que devuelve o recibe
 	private BooleanProperty edit = new SimpleBooleanProperty();//Operacion con la mtriz
-	private BooleanProperty vector = new SimpleBooleanProperty();//Operacion con la mtriz
+	private BooleanProperty vector = new SimpleBooleanProperty();
 
+	//Constructor donde realizamos los listener y las separaciones
 	public Matriz() {
 		super();	
 		setHgap(5);
@@ -32,8 +39,10 @@ public class Matriz extends GridPane{
 		
 	}
 
+	//Funcion que cons calcula si la matriz en un vector o no y se lo aniade a la property booleana de vector
 	private void vectorValue(){vector.setValue(ma.getValue().isVector());}
 
+	//Funcion que genera el GridPane que es el componente dependiendo del tamaño que se le asigne a la matriz
 	private void generarTamanoGridPane() {
 		getColumnConstraints().clear();
 		for (int cols = 0; cols < ma.get().numCols(); cols++) {
@@ -48,7 +57,7 @@ public class Matriz extends GridPane{
 		
 	}
 
-
+	//Rellena la matriz de label o de TextField dependiendo del tipo de matriz que sea (editable o no )
 	private void generarMatriz() {
 		getChildren().clear();
 		for(int i = 0; i< ma.get().numCols(); i++) {
@@ -75,7 +84,7 @@ public class Matriz extends GridPane{
 	}
 
 	
-
+	//Captura los errores si el numero introducido en el textField del componente no es double desde el principio 
 	private void onTextChanged(int col, int row, ObservableValue<? extends String> o, String ov, String nv) {
 		
 		try {

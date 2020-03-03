@@ -27,11 +27,12 @@ import matapp.matrices.componente.Matriz;
 import matapp.utils.FormulaUtils;
 
 public class MatrixController implements Initializable {
-
-	
-	private int i;
-	private SimpleMatrix m = new SimpleMatrix();
-	
+	/**
+	 * @author Andrea Morales
+	 * 
+	 *Controllador de la calculadora de Matrices
+	 * 
+	 */
 	//View
     @FXML
     private BorderPane root;
@@ -95,6 +96,12 @@ public class MatrixController implements Initializable {
     @FXML
     private ScrollPane scrollResult;
     
+    //Variables a usar para poder tener dos matrices y la i es lo que nos indicara 
+    //la operacion a realizar cuando se pulse el boton igual (+,-,*/)
+	private int i;
+	private SimpleMatrix m = new SimpleMatrix();
+    
+	/*Lo enlazamos con el fxml de la de donde esta la view de las matrices*/
     public MatrixController() {
 		 try { 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CalculadoraMatricesView.fxml"));
@@ -104,7 +111,9 @@ public class MatrixController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-    
+    /*bindeamos y generamos las imagenes que van a ir en los botones
+     * ademas de poner los listener y deshabilitar el boton de resultado  que solo funcionara 
+     * cuando haya algo que operar*/
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	
@@ -130,6 +139,7 @@ public class MatrixController implements Initializable {
     	matrixOperador.prefWidthProperty().bind(scrollMatrix.widthProperty().subtract(50));
     	resultBox.prefWidthProperty().bind(scrollResult.widthProperty().subtract(50));
 	}
+    /*Machaca el label que nos va diciendo si la matriz que estamos introduciendo es un vector o no */
     private void vectorFuncion() {
     	if(matrixOperador.isVector()) {
     		isVectorLabel.setText("Es Vector");
@@ -137,7 +147,7 @@ public class MatrixController implements Initializable {
     		isVectorLabel.setText("No es Vector");
     	}
 	}
-
+    /*Con esta funciones pasamos las matrices a Imagenes*/
 	public Image matrixToImage(SimpleMatrix matrixImage) {
     	Image resu= null;
     	String matrixIntroduce = "\\begin{Bmatrix}\n";
@@ -170,7 +180,8 @@ public class MatrixController implements Initializable {
     	return resu;
     }
     
-    
+    /*El boton de resultado donde dependiendo de la operacion que se halla selecionado 
+     * lo opera */
     @FXML
     void onResultAction(ActionEvent event) {
     	resultBox.getChildren().add(0, new ImageView(matrixToImage(matrixOperador.getMa())));
@@ -190,7 +201,6 @@ public class MatrixController implements Initializable {
 		}else if(i == 2) {
 			//Resta
 			try {
-				//No funciona
 				SimpleMatrix resul = m.plus(matrixOperador.getMa().negative());
 				
 		    	mr.setMa(resul);
@@ -221,7 +231,8 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollResult::requestLayout);
 	}
 
-
+    /*Boton de sumar, donde  activa el boton de resultado y añade al VBox de los resultados 
+     * la matriz a operar y el signo de la operacion */
 	@FXML
     void onAddtionAction(ActionEvent event) {
 		m = matrixOperador.getMa().copy();
@@ -232,6 +243,8 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollResult::requestLayout);
     	
     }
+	 /*Boton de restar, donde  activa el boton de resultado y añade al VBox de los resultados 
+     * la matriz a operar y el signo de la operacion */
 	@FXML
     void onSubtrectionAction(ActionEvent event) {
     	m=matrixOperador.getMa().copy();
@@ -243,7 +256,8 @@ public class MatrixController implements Initializable {
     	
     }
 	
-
+	 /*Boton de dividir, donde  activa el boton de resultado y añade al VBox de los resultados 
+     * la matriz a operar y el signo de la operacion */
     @FXML
     void onDivideAction(ActionEvent event) {
     	m=matrixOperador.getMa().copy();
@@ -259,7 +273,8 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollResult::requestLayout);
     }
     
-
+    /*Boton de multiplicar, donde  activa el boton de resultado y añade al VBox de los resultados 
+     * la matriz a operar y el signo de la operacion */
     @FXML
     void onMultiplyAction(ActionEvent event) {
     	m=matrixOperador.getMa().copy();
@@ -270,7 +285,8 @@ public class MatrixController implements Initializable {
 
     	Platform.runLater(scrollResult::requestLayout);
     }
-
+    /*Aquí cogemos la matriz del operdor y hallamos su determinante, aniadiendolo a 
+     * el VBox de los resultados*/
     @FXML
     void onDeterminantAction(ActionEvent event) {
     	Matriz mat = new Matriz();
@@ -282,7 +298,7 @@ public class MatrixController implements Initializable {
 
     	Platform.runLater(scrollResult::requestLayout);
     }
-
+    /*Halla el derterminante de la matriz y lo aniade en el VBox del resultado*/
     @FXML
     void onDiagonalAction(ActionEvent event) {
     	Matriz mat = new Matriz();
@@ -296,7 +312,7 @@ public class MatrixController implements Initializable {
 
     }
 
-
+    /*Calcula la inversa de la matriz*/
     @FXML
     void onInverseAction(ActionEvent event) {
     	Matriz mat = new Matriz();
@@ -309,7 +325,7 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollResult::requestLayout);
 
     }
-
+    /*Calcula la matriz traspuesta*/
     @FXML
     void onOrthogonalAction(ActionEvent event) {
 		 try {
@@ -323,7 +339,7 @@ public class MatrixController implements Initializable {
 			Platform.runLater(scrollResult::requestLayout);
 		 }catch(java.lang.RuntimeException e) {}
     }
-
+    /*Halla matriz negativa de la matriz operados*/
     @FXML
     void onNegativeAction(ActionEvent event) {
     	Matriz mat = new Matriz();
@@ -337,7 +353,7 @@ public class MatrixController implements Initializable {
 
     }
 
-
+    /*Boton para reducir el numero de columnas de la matriz operador*/
     @FXML
     void onLessColumnButtonAction(ActionEvent event) {
     	if( matrixOperador.getMa().numCols()>1) {
@@ -349,7 +365,7 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollMatrix::requestLayout);
   
     }
-
+    /*Boton para reducir el numero de filas de la matriz operador*/
     @FXML
     void onLessRowButtonAction(ActionEvent event) {
     	if(matrixOperador.getMa().numRows()>1) {
@@ -361,7 +377,7 @@ public class MatrixController implements Initializable {
     	Platform.runLater(scrollMatrix::requestLayout);
     
     }
-
+    /*Boton para ampliar el numero de columnas de la matriz operador*/
     @FXML
     void onMoreColumnButtonAction(ActionEvent event) {
     	SimpleMatrix maR = matrixOperador.getMa();
@@ -369,7 +385,7 @@ public class MatrixController implements Initializable {
     	matrixOperador.setMa(maR);
     	Platform.runLater(scrollMatrix::requestLayout);
     }
-
+    /*Boton para ampliar el numero de filas de la matriz operador*/
     @FXML
     void onMoreRowButtonAction(ActionEvent event) {
     	SimpleMatrix maR = matrixOperador.getMa();
