@@ -28,6 +28,6 @@
             </HBox>
          </top>
       </BorderPane>
-      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="150.0" direction="RIGHT" layoutX="-206.0" maxWidth="-Infinity" prefHeight="480.0" prefWidth="179.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-206.0" AnchorPane.topAnchor="0.0" />
+      <JFXDrawer fx:id="menuDrawer" defaultDrawerSize="200.0" direction="RIGHT" layoutX="-232.0" maxWidth="-Infinity" prefHeight="480.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-232.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
