@@ -26,20 +26,27 @@
                   </ScrollPane>
                </center>
                <bottom>
-                  <HBox spacing="5.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="moreRowButton" mnemonicParsing="false" onAction="#onMoreRowButtonAction" prefHeight="26.0" prefWidth="28.0" styleClass="matrixGrow" text="+">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="lessRowButton" mnemonicParsing="false" onAction="#onLessRowButtonAction" prefHeight="26.0" prefWidth="28.0" styleClass="matrixGrow" text="-">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <center>
+                        <HBox prefHeight="20.0" prefWidth="272.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="moreRowButton" mnemonicParsing="false" onAction="#onMoreRowButtonAction" prefHeight="26.0" prefWidth="28.0" styleClass="matrixGrow" text="+">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="lessRowButton" mnemonicParsing="false" onAction="#onLessRowButtonAction" prefHeight="26.0" prefWidth="28.0" styleClass="matrixGrow" text="-">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </center>
+                     <right>
+                        <HBox spacing="5.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
                </bottom>
                <right>
                   <VBox spacing="5.0" BorderPane.alignment="CENTER">
@@ -69,61 +76,70 @@
                   <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="60.0" />
               </columnConstraints>
               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" />
               </rowConstraints>
                <children>
-                  <Button fx:id="inverseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onInverseAction" prefWidth="95.0" styleClass="operatorBasic">
+                  <Button fx:id="inverseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onInverseAction" prefWidth="95.0" styleClass="operatorBasic" GridPane.rowIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="orthogonalButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onOrthogonalAction" styleClass="operatorBasic" GridPane.columnIndex="1">
+                  <Button fx:id="orthogonalButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onOrthogonalAction" styleClass="operatorBasic" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="negativeButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNegativeAction" styleClass="operatorBasic" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="negativeButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNegativeAction" styleClass="operatorBasic" GridPane.columnIndex="2">
+                  <Button fx:id="determinantButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDeterminantAction" styleClass="operatorBasic" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="determinantButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDeterminantAction" styleClass="operatorBasic" GridPane.columnIndex="3">
+                  <Button fx:id="resultButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onResultAction" styleClass="operatorBasic" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="resultButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onResultAction" styleClass="operatorBasic" GridPane.columnIndex="4">
+                  <Button fx:id="additionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAddtionAction" prefWidth="95.0" styleClass="operatorBasic" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="additionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAddtionAction" prefWidth="95.0" styleClass="operatorBasic" GridPane.rowIndex="1">
+                  <Button fx:id="subtractionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSubtrectionAction" styleClass="operatorBasic" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="subtractionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSubtrectionAction" styleClass="operatorBasic" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="divideButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDivideAction" styleClass="operatorBasic" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="divideButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDivideAction" styleClass="operatorBasic" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="multiplyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMultiplyAction" styleClass="operatorBasic" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="multiplyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMultiplyAction" styleClass="operatorBasic" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button fx:id="diagonalButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDiagonalAction" styleClass="operatorBasic" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="diagonalButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDiagonalAction" styleClass="operatorBasic" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClearButton" styleClass="operatorBasic" text="C" GridPane.columnIndex="3" />
+                  <Button fx:id="clearButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClearAllButton" styleClass="operatorBasic" text="CE" GridPane.columnIndex="4" />
                </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </GridPane>
          </bottom>
       </BorderPane>

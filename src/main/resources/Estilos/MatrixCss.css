@@ -21,6 +21,7 @@
 
 .operatorBasic{
 	-fx-background-color:#9020D4;
+	-fx-text-fill: white;
 }
 .matrixGrow{
 	-fx-background-color:#BB73E8;

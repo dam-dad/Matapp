@@ -394,7 +394,17 @@ public class MatrixController implements Initializable {
     	matrixOperador.setMa(maR);
     	Platform.runLater(scrollMatrix::requestLayout);
     }
-
+    /*Boton que limpia la matriz*/
+    @FXML
+    void onClearButton(ActionEvent event) {
+    	matrixOperador.setMa(new SimpleMatrix(1,1));
+    }
+    /*Boton de limpieza de la matriz y el cuadro de resultados*/
+    @FXML
+    void onClearAllButton(ActionEvent event) {
+    	matrixOperador.setMa(new SimpleMatrix(1,1));
+    	resultBox.getChildren().clear();
+    }
 	public BorderPane getRoot() {
 		return root;
 	}
