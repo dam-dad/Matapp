@@ -74,13 +74,39 @@
 	</dependencies>
 	<pluginRepositories>
 		<pluginRepository>
-	    <id>Matapp</id>
-	    <url>https://github.com/Kiliankgr/Matapp/raw/master/releases</url>
+			<id>Matapp</id>
+			<url>https://github.com/dam-dad/Matapp/raw/master/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
 		<plugins>
-				<plugin>
+			<plugin>
+				<groupId>dam-dad.maven</groupId>
+				<artifactId>matapp</artifactId>
+				<version>0.0.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>package</goal>
+						</goals>
+						<configuration>
+							
+							<bundleJre>true</bundleJre>
+							<generateInstaller>true</generateInstaller>
+							<administratorRequired>false</administratorRequired>
+							<platform>windows</platform>
+							<organizationName>MatappTeam</organizationName>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
 				<version>3.0.0-M1</version>
@@ -100,6 +126,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
+
+
 </project>
