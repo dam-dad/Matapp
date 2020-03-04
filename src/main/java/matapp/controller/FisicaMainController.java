@@ -151,6 +151,8 @@ public class FisicaMainController implements Initializable{
 		    System.out.println(ex.getMessage());
 		}
 		
+		
+		
 		Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
 		formulaListObject.set(gson.fromJson(fichero, FormulaList.class));
 	}
