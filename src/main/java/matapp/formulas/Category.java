@@ -56,10 +56,11 @@ public class Category {
 	public final void setFormulas(final ObservableList<Formula> formulas) {
 		this.formulasProperty().set(formulas);
 	}
-	
 	@Override
 	public String toString() {
 		return getName();
 	}
+
+	
 
 }

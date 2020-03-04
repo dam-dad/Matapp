@@ -38,38 +38,40 @@ public class Parametro extends GridPane{
 	Formula formula;
 	public Parametro(Formula formula) {
 		super();
+		
 		setHgap(10);
+		setAlignment(Pos.CENTER_LEFT);
+		
 		this.formula=formula;
 
-		setAlignment(Pos.CENTER_LEFT);
 		final NumberValidator numberValidator = new NumberValidator();
 		
-		JFXTextField auxTextField=null;
-		Label auxLabel=null;
-		
 		//Recorremos todas las variables que posea la formula
-		for(int i=0;i<formula.getVariables().size();i++) {
-			auxTextField=new  JFXTextField();
-			valorText.get().add(auxTextField);
+		for(int i = 0; i < formula.getVariables().size(); i++) {
 			
-			valorText.get().get(i).getValidators().add(numberValidator);//le añadios a cada una un validador
-			int j=i;
+			Variable variable = formula.getVariables().get(i);
+			
+			JFXTextField  auxTextField = new  JFXTextField();
+			
+			auxTextField.getValidators().add(numberValidator);//le añadios a cada una un validador
+
 			//añadimos un listener para establecer ciertos criterios del validador 
-			valorText.get().get(i).setOnKeyReleased(e -> {
-		        if (!valorText.get().get(j).getText().equals(""))
-		        	valorText.get().get(j).validate();
+			auxTextField.setOnKeyReleased(e -> {
+		        if (!auxTextField.getText().isEmpty()) auxTextField.validate();
 		    });
 			
-			auxLabel=new Label(this.formula.getVariables().get(i).getName());
-			auxLabel.setTooltip(new Tooltip(formula.getVariables().get(i).getDescripcion()));
+			Label auxLabel=new Label(variable.getName());
+			auxLabel.setTooltip(new Tooltip(variable.getDescripcion()));
+
+			valorText.add(auxTextField);
 			nombreLabel.add(auxLabel);
 			
 			//añadimos una fila por cada variable 
-			addRow(i,nombreLabel.get().get(i),
-					valorText.get().get(i),
-					new Label(this.formula.getVariables().get(i).getMagnitud()));	 
+			addRow(i, auxLabel, auxTextField, new Label(variable.getMagnitud()));
+			
 		}
 	}
+	
 	public String calcular() {
 		
 		try {
