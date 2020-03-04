@@ -60,6 +60,12 @@ public class Variable {
 	public final void setMagnitud(final String magnitud) {
 		this.magnitudProperty().set(magnitud);
 	}
+	@Override
+	public String toString() {
+		return "Variable [name=" + getName() + ", descripcion=" + getDescripcion() + ", magnitud=" + getMagnitud() + "]";
+	}
+	
+	
 	
 
 }

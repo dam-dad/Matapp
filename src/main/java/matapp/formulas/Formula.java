@@ -113,6 +113,13 @@ public class Formula {
 	public final void setImgExpresion(final String imgExpresion) {
 		this.imgExpresionProperty().set(imgExpresion);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Formula [name=" + getName() + ", description=" + getDescription() + ", expression=" + getExpression()
+				+ ", imgExpresion=" + getImgExpresion() + ", result=" + getResult() + ", variables=" + getVariables() + "]";
+	}
 	
 
 	

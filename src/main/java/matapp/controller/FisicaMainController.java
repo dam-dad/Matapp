@@ -7,10 +7,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.hildan.fxgson.FxGson;
 
 import com.google.gson.Gson;
@@ -135,24 +140,16 @@ public class FisicaMainController implements Initializable{
 		
 	}
 	private void onCargarFicheroAction() {
-		String fichero = "";
-		 //revisar 
-//		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").toExternalForm()))){ 
-		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").getFile()))){
-//		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/ficheros/Formulas.json"))) {
-		    String linea;
-		    while ((linea = br.readLine()) != null) {
-		        fichero += linea;
-		    }
-		 
-		} catch (FileNotFoundException ex) {//colocar un alert
-		    System.out.println(ex.getMessage());
-		} catch (IOException ex) {
-		    System.out.println(ex.getMessage());
+		try {
+			String json = IOUtils.resourceToString("/ficheros/Formulas.json", Charset.forName("UTF-8"));
+			Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
+			formulaListObject.set(gson.fromJson(json, FormulaList.class));
+			
+			System.out.println(formulaListObject.get());
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
-		formulaListObject.set(gson.fromJson(fichero, FormulaList.class));
 	}
 		
 	public VBox getRoot() {

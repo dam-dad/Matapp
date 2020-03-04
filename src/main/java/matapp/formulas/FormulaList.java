@@ -32,8 +32,13 @@ public class FormulaList {
 	public final void setCategories(final ObservableList<Category> categories) {
 		this.categoriesProperty().set(categories);
 	}
-	
 
+
+	@Override
+	public String toString() {
+		return "FormulaList [categories=" + getCategories() + "]";
+	}
+	
 
 
 }
