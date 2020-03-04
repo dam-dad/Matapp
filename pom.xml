@@ -74,16 +74,16 @@
 	</dependencies>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>Matapp</id>
-			<url>https://github.com/dam-dad/Matapp/raw/master/releases</url>
+			<id>javapackager</id>
+			<url>https://github.com/fvarrui/JavaPackager/raw/master/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>dam-dad.maven</groupId>
-				<artifactId>matapp</artifactId>
-				<version>0.0.1</version>
+				<groupId>fvarrui.maven</groupId>
+				<artifactId>javapackager</artifactId>
+				<version>0.8.9</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -91,12 +91,16 @@
 							<goal>package</goal>
 						</goals>
 						<configuration>
-							
+
 							<bundleJre>true</bundleJre>
+							<customizedJre>false</customizedJre>
 							<generateInstaller>true</generateInstaller>
 							<administratorRequired>false</administratorRequired>
 							<platform>windows</platform>
 							<organizationName>MatappTeam</organizationName>
+							<additionalResources>
+								<param>\ficheros\Formulas.json</param>
+							</additionalResources>
 
 						</configuration>
 					</execution>

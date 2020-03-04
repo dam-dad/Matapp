@@ -74,18 +74,7 @@ public class FisicaMainController implements Initializable{
     FisicaFormulaController fisicaFormulaController;
     
     Stage stage;
-    
-//    public FisicaMainController() {
-//    	
-//    	try {
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FisicaMainView.fxml"));
-//			loader.setController(this);
-//			loader.load();
-//		} catch (IOException e) {
-//			
-//			e.printStackTrace();
-//		}
-//    }    	
+      	
     public FisicaMainController(MenuController menuController) {
     	
     	 try {
@@ -142,20 +131,15 @@ public class FisicaMainController implements Initializable{
 		Formula aux=formulaSeleccionada.get();
 		
 		fisicaFormulaController=new FisicaFormulaController(aux,this);
-		
-//		stage=new Stage();
-//		Scene scene=new Scene(fisicaFormulaController.getRoot());
-//		stage.setTitle("Matapp");
-//		stage.setScene(scene);
-//		stage.show();
 		menuController.setContent(fisicaFormulaController.getRoot());
 		
 	}
 	private void onCargarFicheroAction() {
 		String fichero = "";
 		 //revisar 
-//		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").toExternalForm()))) {
-		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/ficheros/Formulas.json"))) {
+//		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").toExternalForm()))){ 
+		try (BufferedReader br = new BufferedReader(new FileReader(getClass().getResource("/ficheros/Formulas.json").getFile()))){
+//		try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/ficheros/Formulas.json"))) {
 		    String linea;
 		    while ((linea = br.readLine()) != null) {
 		        fichero += linea;
@@ -170,22 +154,7 @@ public class FisicaMainController implements Initializable{
 		Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
 		formulaListObject.set(gson.fromJson(fichero, FormulaList.class));
 	}
-	
-	private void onGuardarAction() {
-		File file=new File("Formulas.txt"); 
 		
-		FileWriter fW=null;
-		try {
-			fW = new FileWriter(file);
-			BufferedWriter bW=new BufferedWriter(fW);
-			Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
-			bW.write(gson.toJson(formulaListObject.get()));
-			bW.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public VBox getRoot() {
 		return root;
 	}
